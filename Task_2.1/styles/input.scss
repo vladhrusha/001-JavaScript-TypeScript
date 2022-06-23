@@ -1,0 +1,43 @@
+$variable-color: #4399E4;
+$button-color: #212F22;
+$p-color: #1E1D21;
+body {
+    background-color:red;
+    height: 100vh;
+}
+
+.paragraph {
+    background-color: $p-color;
+    padding: 10px 15px;
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color:white;
+    font-size: 40px;
+    font-weight: 600;
+
+
+    .span-color {
+        color: $variable-color;
+    }
+}
+
+.button {
+    background-color: $button-color;
+    border-radius: 5px;
+    padding: 10px 15px;
+
+    color: white;
+    font-size: 20px;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
