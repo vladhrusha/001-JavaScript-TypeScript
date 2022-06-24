@@ -1,9 +1,9 @@
-var colorR, colorG, colorB;
-var hex = '';
-var ntcMatch;
-var colorSystem;
+const button = document.querySelector('.button');
+button.addEventListener('click', changeBackgroundColor, false);
 
-function onClick() {
+function changeBackgroundColor() {
+  let colorR, colorG, colorB;
+
   colorR = Math.floor(Math.random() * 256);
   colorG = Math.floor(Math.random() * 256);
   colorB = Math.floor(Math.random() * 256);
@@ -11,42 +11,39 @@ function onClick() {
   document.body.style.backgroundColor =
     'rgb(' + colorR + ',' + colorG + ',' + colorB + ')';
 
-  generateHexColor();
-
-  outputColorName();
-
-  hex = '';
+  outputColorName(colorR, colorG, colorB);
 }
 
-var rgbToHex = function (rgbX) {
-  var hex = Number(rgbX).toString(16);
-  if (hex.length < 2) {
-    hex = '0' + hex;
+function rgbToHex(rgbX) {
+  if (Number(rgbX).toString(16).length < 2) {
+    return '0' + Number(rgbX).toString(16);
   }
-  return hex;
-};
+  return Number(rgbX).toString(16);
+}
 
-var generateHexColor = function () {
-  hex += '#';
-  hex += rgbToHex(colorR);
-  hex += rgbToHex(colorG);
-  hex += rgbToHex(colorB);
-};
+function generateHexColor(colorR, colorG, colorB) {
+  return '#' + rgbToHex(colorR) + rgbToHex(colorG) + rgbToHex(colorB);
+}
 
-var outputColorName = function () {
+function outputColorName(colorR, colorG, colorB) {
+  let colorSystem;
+  let ntcMatch;
+  let hex = generateHexColor(colorR, colorG, colorB);
+
   colorSystem = Math.floor(Math.random() * 3) + 1;
+  colorSpan = document.querySelector('.span-color');
   switch (colorSystem) {
     case 1:
-      document.getElementsByClassName('span-color')[0].innerHTML =
-        'rgb(' + colorR + ',' + colorG + ',' + colorB + ')';
+      colorSpan.innerHTML = 'rgb(' + colorR + ',' + colorG + ',' + colorB + ')';
       break;
     case 2:
-      document.getElementsByClassName('span-color')[0].innerHTML = hex;
+      colorSpan.innerHTML = hex;
       break;
     case 3:
       ntcMatch = ntc.name(hex);
-      document.getElementsByClassName('span-color')[0].innerHTML = ntcMatch[1];
+      colorSpan.innerHTML = ntcMatch[1];
 
       break;
   }
-};
+  hex = '';
+}
