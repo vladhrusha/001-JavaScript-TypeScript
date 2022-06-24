@@ -8,21 +8,13 @@ function changeBackgroundColor() {
   colorG = Math.floor(Math.random() * 256);
   colorB = Math.floor(Math.random() * 256);
 
-  document.body.style.backgroundColor =
-    'rgb(' + colorR + ',' + colorG + ',' + colorB + ')';
+  document.body.style.backgroundColor = composeRGBString(
+    colorR,
+    colorG,
+    colorB
+  );
 
   outputColorName(colorR, colorG, colorB);
-}
-
-function rgbToHex(rgbX) {
-  if (Number(rgbX).toString(16).length < 2) {
-    return '0' + Number(rgbX).toString(16);
-  }
-  return Number(rgbX).toString(16);
-}
-
-function generateHexColor(colorR, colorG, colorB) {
-  return '#' + rgbToHex(colorR) + rgbToHex(colorG) + rgbToHex(colorB);
 }
 
 function outputColorName(colorR, colorG, colorB) {
@@ -34,7 +26,7 @@ function outputColorName(colorR, colorG, colorB) {
   colorSpan = document.querySelector('.span-color');
   switch (colorSystem) {
     case 1:
-      colorSpan.innerHTML = 'rgb(' + colorR + ',' + colorG + ',' + colorB + ')';
+      colorSpan.innerHTML = composeRGBString(colorR, colorG, colorB);
       break;
     case 2:
       colorSpan.innerHTML = hex;
@@ -45,5 +37,19 @@ function outputColorName(colorR, colorG, colorB) {
 
       break;
   }
-  hex = '';
+}
+
+function generateHexColor(colorR, colorG, colorB) {
+  return '#' + rgbToHex(colorR) + rgbToHex(colorG) + rgbToHex(colorB);
+}
+
+function rgbToHex(rgbX) {
+  if (Number(rgbX).toString(16).length < 2) {
+    return '0' + Number(rgbX).toString(16);
+  }
+  return Number(rgbX).toString(16);
+}
+
+function composeRGBString(colorR, colorG, colorB) {
+  return 'rgb(' + colorR + ',' + colorG + ',' + colorB + ')';
 }
