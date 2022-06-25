@@ -1,0 +1,45 @@
+{
+  "breakfast":
+  [
+  { "name":"Oatmeal", 
+    "description":"Mauris hendrerit ut ex vitae viverra. Aliquam erat volutpat. Fusce quis ligula at mauris tempus auctor. Ut fermentum lacus et.",
+     "imageURL": "../images/food/breakfast/oatmeal.jpg", "price": "$14.99" }
+],
+"dinner":
+  [
+  { "name":"Chicken Curry", 
+    "description":"Mauris hendrerit ut ex vitae viverra. Aliquam erat volutpat. Fusce quis ligula at mauris tempus auctor. Ut fermentum lacus et.",
+     "imageURL": "../images/food/dinner/chicken-curry.jpg", "price": "$14.99" },
+  { "name":"Rice Power Bowl", 
+    "description":"Mauris hendrerit ut ex vitae viverra. Aliquam erat volutpat. Fusce quis ligula at mauris tempus auctor. Ut fermentum lacus et.",
+     "imageURL": "../images/food/dinner/rice-power-bowl.jpg", "price": "$13.99" }
+],
+"lunch":
+  [
+  { "name":"Chicken Club", 
+    "description":"Mauris hendrerit ut ex vitae viverra. Aliquam erat volutpat. Fusce quis ligula at mauris tempus auctor. Ut fermentum lacus et.",
+     "imageURL": "../images/food/lunch/chicken-club.jpg", "price": "$14.99" },
+  { "name":"Gracious Vegan", 
+    "description":"Mauris hendrerit ut ex vitae viverra. Aliquam erat volutpat. Fusce quis ligula at mauris tempus auctor. Ut fermentum lacus et.",
+     "imageURL": "../images/food/lunch/gracious-vegan.jpg", "price": "$13.99" },
+       { "name":"Tandoori Chicken", 
+    "description":"Mauris hendrerit ut ex vitae viverra. Aliquam erat volutpat. Fusce quis ligula at mauris tempus auctor. Ut fermentum lacus et.",
+     "imageURL": "../images/food/lunch/tandoori-chicken.jpg", "price": "$13.99" }
+],
+"shakes":
+  [
+  { "name":"Berry Banana", 
+    "description":"Mauris hendrerit ut ex vitae viverra. Aliquam erat volutpat. Fusce quis ligula at mauris tempus auctor. Ut fermentum lacus et.",
+     "imageURL": "../images/food/shakes/berry-banana.jpg", "price": "$14.99" },
+  { "name":"Cherry Berry", 
+    "description":"Mauris hendrerit ut ex vitae viverra. Aliquam erat volutpat. Fusce quis ligula at mauris tempus auctor. Ut fermentum lacus et.",
+     "imageURL": "../images/food/shakes/cherry-berry.jpg", "price": "$13.99" },
+       { "name":"Chocolate Cheerios", 
+    "description":"Mauris hendrerit ut ex vitae viverra. Aliquam erat volutpat. Fusce quis ligula at mauris tempus auctor. Ut fermentum lacus et.",
+     "imageURL": "../images/food/shakes/chocolate-cheerios.jpg", "price": "$13.99" },
+            { "name":"Strawberry Banana", 
+    "description":"Mauris hendrerit ut ex vitae viverra. Aliquam erat volutpat. Fusce quis ligula at mauris tempus auctor. Ut fermentum lacus et.",
+     "imageURL": "../images/food/shakes/strawberry-banana.jpg", "price": "$13.99" }
+],
+"type": "module"
+}
