@@ -3,6 +3,7 @@ import food from '../data/food-items.json' assert { type: 'json' };
 addNavButtonsEvent();
 createAllFoodCategoriesMenu();
 
+//adds changeMenu Event(onClick)
 function addNavButtonsEvent() {
   let navButtons = document.querySelectorAll('.nav__buttons');
   navButtons[0].addEventListener('click', createAllFoodCategoriesMenu, false);
@@ -16,6 +17,7 @@ function changeMenuCategory() {
   createCategoryMenu(category);
 }
 
+//creates menu with all food in provided category
 function createCategoryMenu(category) {
   let menu = document.querySelector('.menu');
   menu.innerHTML = '';
@@ -36,6 +38,7 @@ function createCategoryMenu(category) {
   createMenuColumns(menu, mealType);
 }
 
+//create Menu with all food available
 function createAllFoodCategoriesMenu() {
   let menu = document.querySelector('.menu');
   menu.innerHTML = '';
@@ -53,6 +56,7 @@ function createAllFoodCategoriesMenu() {
   }
 }
 
+//returns mealType Objects that contains all meals for select type
 function returnMealTypeObject(mealTypeString) {
   let mealType;
   switch (mealTypeString) {
@@ -72,6 +76,7 @@ function returnMealTypeObject(mealTypeString) {
   return mealType;
 }
 
+//creates menu columns with menu items
 function createMenuColumns(menu, mealType) {
   for (let i = 0; i < mealType.length; i += 2) {
     menu.querySelectorAll('.menu__column')[0].innerHTML += createMenuItem(
@@ -86,6 +91,7 @@ function createMenuColumns(menu, mealType) {
   }
 }
 
+//creates individual menu item
 function createMenuItem(meal) {
   let menuItem = '';
   menuItem += '\t\t<article class="menu__items">\n';
