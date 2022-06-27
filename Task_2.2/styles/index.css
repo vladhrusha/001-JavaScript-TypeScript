@@ -6,7 +6,15 @@ body {
 
 .heading--largexxx {
   text-align: center;
+  font-size: xxx-large;
+  position: relative;
+}
+
+.heading__borderBottom {
   border-bottom: solid 5px #BAA57D;
+  position: absolute;
+  left: 35%;
+  right: 35%;
 }
 
 .nav__buttons {
