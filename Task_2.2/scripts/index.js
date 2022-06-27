@@ -21,8 +21,7 @@ function changeMenuCategory() {
 function createCategoryMenu(category) {
   let menu = document.querySelector('.menu');
   menu.innerHTML = '';
-  menu.innerHTML += '\t  <div class="menu__column">\n';
-  menu.innerHTML += '\t  <div class="menu__column">\n';
+  initializeMenuColumns(menu, 2);
 
   let mealTypes = Object.keys(food);
   let mealTypeString;
@@ -35,15 +34,14 @@ function createCategoryMenu(category) {
   }
   mealType = returnMealTypeObject(mealTypeString);
 
-  createMenuColumns(menu, mealType);
+  fillMenuColumns(menu, mealType);
 }
 
 //create Menu with all food available
 function createAllFoodCategoriesMenu() {
   let menu = document.querySelector('.menu');
   menu.innerHTML = '';
-  menu.innerHTML += '\t  <div class="menu__column">\n';
-  menu.innerHTML += '\t  <div class="menu__column">\n';
+  initializeMenuColumns(menu, 2);
 
   let mealTypes = Object.keys(food);
   let mealTypeString;
@@ -52,7 +50,13 @@ function createAllFoodCategoriesMenu() {
   for (let i = 0; i < mealTypes.length - 1; i++) {
     mealTypeString = mealTypes[i];
     mealType = returnMealTypeObject(mealTypeString);
-    createMenuColumns(menu, mealType);
+    fillMenuColumns(menu, mealType);
+  }
+}
+
+function initializeMenuColumns(menu, numberOfColumns) {
+  for (let i = 0; i < numberOfColumns; i++) {
+    menu.innerHTML += '\t  <div class="menu__column">\n';
   }
 }
 
@@ -77,17 +81,12 @@ function returnMealTypeObject(mealTypeString) {
 }
 
 //creates menu columns with menu items
-function createMenuColumns(menu, mealType) {
-  for (let i = 0; i < mealType.length; i += 2) {
-    menu.querySelectorAll('.menu__column')[0].innerHTML += createMenuItem(
-      mealType[i]
-    );
-  }
-
-  for (let i = 1; i < mealType.length; i += 2) {
-    menu.querySelectorAll('.menu__column')[1].innerHTML += createMenuItem(
-      mealType[i]
-    );
+function fillMenuColumns(menu, mealType) {
+  let menuColumns = menu.querySelectorAll('.menu__column');
+  for (let j = 0; j < menuColumns.length; j++) {
+    for (let i = j; i < mealType.length; i += menuColumns.length) {
+      menuColumns[j].innerHTML += createMenuItem(mealType[i]);
+    }
   }
 }
 
