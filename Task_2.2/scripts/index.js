@@ -1,22 +1,22 @@
 import food from '../data/food-items.json' assert { type: 'json' };
 
 addNavButtonsEvent();
-createAllFoodTypesMenu();
+createAllFoodCategoriesMenu();
 
 function addNavButtonsEvent() {
   let navButtons = document.querySelectorAll('.nav__buttons');
-  navButtons[0].addEventListener('click', createAllFoodTypesMenu, false);
+  navButtons[0].addEventListener('click', createAllFoodCategoriesMenu, false);
   for (let i = 1; i < navButtons.length; i++) {
-    navButtons[i].addEventListener('click', changeCategory, false);
+    navButtons[i].addEventListener('click', changeMenuCategory, false);
   }
 }
 
-function changeCategory() {
+function changeMenuCategory() {
   let category = this.innerHTML;
-  createMenu(category);
+  createCategoryMenu(category);
 }
 
-function createMenu(category) {
+function createCategoryMenu(category) {
   let menu = document.querySelector('.menu');
   menu.innerHTML = '';
   menu.innerHTML += '\t  <div class="menu__column">\n';
@@ -36,7 +36,7 @@ function createMenu(category) {
   createMenuColumns(menu, mealType);
 }
 
-function createAllFoodTypesMenu() {
+function createAllFoodCategoriesMenu() {
   let menu = document.querySelector('.menu');
   menu.innerHTML = '';
   menu.innerHTML += '\t  <div class="menu__column">\n';
