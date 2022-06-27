@@ -1,4 +1,5 @@
 import food from '../data/food-items.json' assert { type: 'json' };
+const numberOfMenuColumns = 2;
 
 addNavButtonsEvent();
 createAllFoodCategoriesMenu();
@@ -21,7 +22,8 @@ function changeMenuCategory() {
 function createCategoryMenu(category) {
   let menu = document.querySelector('.menu');
   menu.innerHTML = '';
-  initializeMenuColumns(menu, 2);
+  console.log(numberOfMenuColumns);
+  initializeMenuColumns(menu, numberOfMenuColumns);
 
   let mealTypes = Object.keys(food);
   let mealTypeString;
@@ -41,7 +43,7 @@ function createCategoryMenu(category) {
 function createAllFoodCategoriesMenu() {
   let menu = document.querySelector('.menu');
   menu.innerHTML = '';
-  initializeMenuColumns(menu, 2);
+  initializeMenuColumns(menu, numberOfMenuColumns);
 
   let mealTypes = Object.keys(food);
   let mealTypeString;
