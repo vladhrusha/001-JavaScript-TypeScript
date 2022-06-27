@@ -103,8 +103,6 @@ function createMenuItem(meal) {
   menuItem += '\t\t\t</header>\n';
   menuItem += '\t\t\t<p class="item__paragraph">\n';
   menuItem += `\t\t\t  ${meal.description}\n`;
-  menuItem +=
-    '\t\t\t  quis ligula at mauris tempus auctor. Ut fermentum lacus et.\n';
   menuItem += '\t\t\t</p>\n';
   menuItem += '\t\t  </div>\n';
   menuItem += '\t\t</article>\n';
