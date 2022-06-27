@@ -59,7 +59,7 @@ function createAllFoodCategoriesMenu() {
 //creates empty N menu columns in section with class menu
 function initializeMenuColumns(menu, numberOfColumns) {
   for (let i = 0; i < numberOfColumns; i++) {
-    menu.innerHTML += '\t  <div class="menu__column">\n';
+    menu.innerHTML += '<div class="menu__column">';
   }
 }
 
@@ -96,17 +96,17 @@ function fillMenuColumns(menu, mealType) {
 //creates individual menu item
 function createMenuItem(meal) {
   let menuItem = '';
-  menuItem += '\t\t<article class="menu__items">\n';
-  menuItem += `<img class="item__image" src="${meal.imageURL}">\n`;
-  menuItem += '\t\t  <div class="item__description">\n';
-  menuItem += '\t\t\t<header class="item__header">\n';
-  menuItem += `\t\t\t  <h5>${meal.name}</h5>\n`;
-  menuItem += `\t\t\t  <h5 class="item__price">${meal.price}</h5>\n`;
-  menuItem += '\t\t\t</header>\n';
-  menuItem += '\t\t\t<p class="item__paragraph">\n';
-  menuItem += `\t\t\t  ${meal.description}\n`;
-  menuItem += '\t\t\t</p>\n';
-  menuItem += '\t\t  </div>\n';
-  menuItem += '\t\t</article>\n';
+  menuItem += '<article class="menu__items">';
+  menuItem += `<img class="item__image" src="${meal.imageURL}">`;
+  menuItem += '<div class="item__description">';
+  menuItem += '<header class="item__header">';
+  menuItem += `<h5>${meal.name}</h5>`;
+  menuItem += `<h5 class="item__price">${meal.price}</h5>`;
+  menuItem += '</header>';
+  menuItem += '<p class="item__paragraph">';
+  menuItem += `${meal.description}`;
+  menuItem += '</p>';
+  menuItem += '</div>';
+  menuItem += '</article>';
   return menuItem;
 }
