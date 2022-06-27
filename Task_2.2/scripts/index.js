@@ -54,6 +54,7 @@ function createAllFoodCategoriesMenu() {
   }
 }
 
+//creates empty N menu columns in section with class menu
 function initializeMenuColumns(menu, numberOfColumns) {
   for (let i = 0; i < numberOfColumns; i++) {
     menu.innerHTML += '\t  <div class="menu__column">\n';
@@ -80,7 +81,7 @@ function returnMealTypeObject(mealTypeString) {
   return mealType;
 }
 
-//creates menu columns with menu items
+//fills menu columns with menu items
 function fillMenuColumns(menu, mealType) {
   let menuColumns = menu.querySelectorAll('.menu__column');
   for (let j = 0; j < menuColumns.length; j++) {
