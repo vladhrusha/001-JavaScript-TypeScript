@@ -10,12 +10,12 @@ function addNavButtonsEvent() {
   navButtons[0].addEventListener('click', createAllFoodCategoriesMenu, false);
   navButtons.forEach((button, i) => {
     if (i != 0) {
-      navButtons[i].addEventListener('click', changeMenuCategory, false);
+      button.addEventListener('click', onChangeMenuCategory, false);
     }
   });
 }
 
-function changeMenuCategory() {
+function onChangeMenuCategory() {
   const category = this.innerHTML;
   createCategoryMenu(category);
 }
@@ -29,11 +29,6 @@ function createCategoryMenu(category) {
   const mealTypes = Object.keys(food);
   let mealTypeString;
 
-  for (let i = 0; i < mealTypes.length; i++) {
-    if (mealTypes[i] == category.toLowerCase()) {
-      mealTypeString = mealTypes[i];
-    }
-  }
   mealTypeString = mealTypes.find((type) => type == category.toLowerCase());
   const mealType = food[mealTypeString];
   fillMenuColumns(menu, mealType);
@@ -75,9 +70,7 @@ function fillMenuColumns(menu, mealType) {
 
 //creates individual menu item
 function createMenuItem(meal) {
-  let menuItem = '';
-
-  menuItem += `
+  return `
   <article class="menu__items">
     <img class="item__image" src="${meal.imageURL}">
     <div class="item__description">
@@ -91,5 +84,4 @@ function createMenuItem(meal) {
     </div>
   </article>
   `;
-  return menuItem;
 }
