@@ -1,0 +1,89 @@
+$theme-color: #BAA57D;
+
+$itemHeaderBorder-color: #D4D7DC;
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.heading--largexxx {
+    text-align: center;
+    font-size: xxx-large;
+    position: relative;
+}
+.heading__borderBottom {
+    border-bottom: solid 5px $theme-color;
+    position: absolute;
+    left: 35%;
+    right: 35%;
+}
+
+.nav__buttons {
+    background-color: white;
+    border-color: $theme-color;
+    border-width: 3px;
+    border-radius: 8px;
+    padding: 5px;
+    color: $theme-color;
+    font-size: 18px;
+}
+.nav__buttons:hover {
+    color: white;
+    background-color: $theme-color;
+}
+
+
+
+.menu {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+
+.menu__items {
+    width: 500px;
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+.item__image {
+    width: 150px;
+    height: 100px;
+    border: solid 3px $theme-color;
+    border-radius: 5px;
+    background-size: cover;
+}
+
+
+.item__description {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+}
+
+.item__header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid $itemHeaderBorder-color;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.item__header h5 {
+    margin: 0;
+}
+.item__price {
+    color: $theme-color;
+}
+
+.item__paragraph {
+    margin: 0;
+}
