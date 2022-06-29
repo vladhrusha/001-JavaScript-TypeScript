@@ -12,6 +12,10 @@ array = generateArray(100, 100);
 displayArray(array);
 displayArray(selectionSort(array));
 
+array = generateArray(100, 100);
+displayArray(array);
+displayArray(insertionSort(array));
+
 function generateArray(numberOfElements, maxValue) {
   let array = [];
   for (let i = 0; i < numberOfElements; i++) {
@@ -32,9 +36,11 @@ function bubbleSort(array) {
     isSwapped = false;
     for (let j = 0; j < array.length - i - 1; j++) {
       if (array[j] > array[j + 1]) {
-        let temp = array[j];
-        array[j] = array[j + 1];
-        array[j + 1] = temp;
+        // let temp = array[j];
+        // array[j] = array[j + 1];
+        // array[j + 1] = temp;
+        [array[j], array[j + 1]] = [array[j + 1], array[j]];
+
         isSwapped = true;
       }
     }
@@ -65,7 +71,17 @@ function selectionSort(array) {
   return array;
 }
 
-function insertionSort(array) {}
+function insertionSort(array) {
+  for (let i = 1; i < array.length; i++) {
+    for (let j = i - 1; j > -1; j--) {
+      if (array[j + 1] < array[j]) {
+        [array[j + 1], array[j]] = [array[j], array[j + 1]];
+      }
+    }
+  }
+
+  return array;
+}
 
 function quickSort(array) {}
 
