@@ -1,3 +1,6 @@
+function quickSort(array) {
+  executeQuickSort(array, 0, array.length - 1);
+}
 function executeQuickSort(array, left, right) {
   let index;
 
@@ -14,9 +17,7 @@ function executeQuickSort(array, left, right) {
   }
   return array;
 }
-function quickSort(array) {
-  executeQuickSort(array, 0, array.length - 1);
-}
+
 function partition(array, left, right) {
   let pivot = array[Math.floor((right + left) / 2)],
     i = left,
