@@ -27,11 +27,7 @@ function generateArray(numberOfElements, maxValue) {
 
 function executeSort(sort, array) {
   const t0 = performance.now();
-  if (sort.name != 'quickSort') {
-    sort([...array]);
-  } else {
-    sort([...array], 0, [...array].length - 1);
-  }
+  sort([...array]);
   const t1 = performance.now();
   return `
   <p>
