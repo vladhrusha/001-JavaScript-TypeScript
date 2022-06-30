@@ -42,4 +42,4 @@ function partition(array, left, right) {
   return i;
 }
 
-export default { quickSort };
+export { quickSort };

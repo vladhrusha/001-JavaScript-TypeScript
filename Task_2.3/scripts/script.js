@@ -1,8 +1,8 @@
-import bubbleSort from './sorting/bubbleSort.js';
-import selectionSort from './sorting/selectionSort.js';
-import insertionSort from './sorting/insertionSort.js';
-import quickSort from './sorting/quickSort.js';
-import mergeSort from './sorting/mergeSort.js';
+import { bubbleSort } from './sorting/bubbleSort.js';
+import { selectionSort } from './sorting/selectionSort.js';
+import { insertionSort } from './sorting/insertionSort.js';
+import { quickSort } from './sorting/quickSort.js';
+import { mergeSort } from './sorting/mergeSort.js';
 
 // window.settings = {
 //   bubbleSort: 'bubbleSort',
@@ -11,11 +11,11 @@ import mergeSort from './sorting/mergeSort.js';
 const array = generateArray(10000, 100);
 const results = document.querySelector('.results');
 
-results.innerHTML += executeSort(bubbleSort.bubbleSort, array);
-results.innerHTML += executeSort(selectionSort.selectionSort, array);
-results.innerHTML += executeSort(insertionSort.insertionSort, array);
-results.innerHTML += executeSort(quickSort.quickSort, array);
-results.innerHTML += executeSort(mergeSort.mergeSort, array);
+results.innerHTML += executeSort(bubbleSort, array);
+results.innerHTML += executeSort(selectionSort, array);
+results.innerHTML += executeSort(insertionSort, array);
+results.innerHTML += executeSort(quickSort, array);
+results.innerHTML += executeSort(mergeSort, array);
 
 function generateArray(numberOfElements, maxValue) {
   let array = [];

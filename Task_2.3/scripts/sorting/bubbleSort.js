@@ -15,4 +15,4 @@ function bubbleSort(array) {
   return array;
 }
 
-export default { bubbleSort };
+export { bubbleSort };

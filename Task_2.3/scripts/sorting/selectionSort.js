@@ -17,4 +17,4 @@ function selectionSort(array) {
 
   return array;
 }
-export default { selectionSort };
+export { selectionSort };

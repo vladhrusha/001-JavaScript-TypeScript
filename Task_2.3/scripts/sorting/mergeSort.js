@@ -20,4 +20,4 @@ function merge(left, right) {
 
   return [...arr, ...left, ...right];
 }
-export default { mergeSort };
+export { mergeSort };
