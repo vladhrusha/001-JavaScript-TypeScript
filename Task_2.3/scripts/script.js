@@ -4,36 +4,18 @@ import insertionSort from './sorting/insertionSort.js';
 import quickSort from './sorting/quickSort.js';
 import mergeSort from './sorting/mergeSort.js';
 
-//
-doSorting(100);
-doSorting(1000);
-doSorting(10000);
-doSorting(100000);
+// window.settings = {
+//   bubbleSort: 'bubbleSort',
+// };
 
-function doSorting(n) {
-  let array = generateArray(n, 100);
-  let paragraph = document.querySelector('p');
-  paragraph.innerHTML += '<br><br>';
-  start();
-  bubbleSort.bubbleSort([...array]);
-  paragraph.innerHTML += `<br>Bubble Sort(N=${n}): ` + end() + 'ms<br><br>';
+const array = generateArray(10000, 100);
+const results = document.querySelector('.results');
 
-  start();
-  selectionSort.selectionSort([...array]);
-  paragraph.innerHTML += `<br>Selection Sort(N=${n}): ` + end() + 'ms<br><br>';
-
-  start();
-  insertionSort.insertionSort([...array]);
-  paragraph.innerHTML += `<br>Insertion Sort(N=${n}): ` + end() + 'ms<br><br>';
-
-  start();
-  quickSort.quickSort([...array], 0, [...array].length - 1);
-  paragraph.innerHTML += `<br>Quick Sort(N=${n}): ` + end() + 'ms<br><br>';
-
-  start();
-  mergeSort.mergeSort([...array]);
-  paragraph.innerHTML += `<br>Merge Sort(N=${n}): ` + end() + 'ms<br>';
-}
+results.innerHTML += selectSortingMethod('bubbleSort', array);
+results.innerHTML += selectSortingMethod('selectionSort', array);
+results.innerHTML += selectSortingMethod('insertionSort', array);
+results.innerHTML += selectSortingMethod('quickSort', array);
+results.innerHTML += selectSortingMethod('mergeSort', array);
 
 function generateArray(numberOfElements, maxValue) {
   let array = [];
@@ -42,20 +24,41 @@ function generateArray(numberOfElements, maxValue) {
   }
   return array;
 }
-// function displayArray(array) {
-//   array.forEach(
-//     (element) => (document.querySelector('p').innerHTML += element + ' ')
-//   );
+
+function selectSortingMethod(fnString, array) {
+  const t0 = performance.now();
+  switch (fnString) {
+    case 'bubbleSort':
+      bubbleSort.bubbleSort([...array]);
+      break;
+    case 'selectionSort':
+      selectionSort.selectionSort([...array]);
+      break;
+    case 'insertionSort':
+      insertionSort.insertionSort([...array]);
+      break;
+    case 'quickSort':
+      quickSort.quickSort([...array], 0, [...array].length - 1);
+      break;
+    case 'mergeSort':
+      mergeSort.mergeSort([...array]);
+      break;
+  }
+  const t1 = performance.now();
+
+  return `
+  <p>
+    <span style="font-size: 24px;">${fnString}ing</span> ${
+    array.length
+  } elements took ${t1 - t0} milliseconds.
+  </p>
+  `;
+}
+
+// function dummyName(sortingName, array) {
+//   const t0 = performance.now();
+//   var fn = window[settings.sortingName];
+//   console.log(fn);
+//   const t1 = performance.now();
+//   console.log(`Call to doSomething took ${t1 - t0} milliseconds.`);
 // }
-
-var startTime, endTime;
-
-function start() {
-  startTime = new Date();
-}
-
-function end() {
-  endTime = new Date();
-  let timeDiff = endTime - startTime;
-  return timeDiff;
-}
