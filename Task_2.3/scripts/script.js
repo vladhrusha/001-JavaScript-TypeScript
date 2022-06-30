@@ -11,11 +11,11 @@ import mergeSort from './sorting/mergeSort.js';
 const array = generateArray(10000, 100);
 const results = document.querySelector('.results');
 
-results.innerHTML += selectSortingMethod('bubbleSort', array);
-results.innerHTML += selectSortingMethod('selectionSort', array);
-results.innerHTML += selectSortingMethod('insertionSort', array);
-results.innerHTML += selectSortingMethod('quickSort', array);
-results.innerHTML += selectSortingMethod('mergeSort', array);
+results.innerHTML += executeSort(bubbleSort.bubbleSort, array);
+results.innerHTML += executeSort(selectionSort.selectionSort, array);
+results.innerHTML += executeSort(insertionSort.insertionSort, array);
+results.innerHTML += executeSort(quickSort.quickSort, array);
+results.innerHTML += executeSort(mergeSort.mergeSort, array);
 
 function generateArray(numberOfElements, maxValue) {
   let array = [];
@@ -25,30 +25,17 @@ function generateArray(numberOfElements, maxValue) {
   return array;
 }
 
-function selectSortingMethod(fnString, array) {
+function executeSort(sort, array) {
   const t0 = performance.now();
-  switch (fnString) {
-    case 'bubbleSort':
-      bubbleSort.bubbleSort([...array]);
-      break;
-    case 'selectionSort':
-      selectionSort.selectionSort([...array]);
-      break;
-    case 'insertionSort':
-      insertionSort.insertionSort([...array]);
-      break;
-    case 'quickSort':
-      quickSort.quickSort([...array], 0, [...array].length - 1);
-      break;
-    case 'mergeSort':
-      mergeSort.mergeSort([...array]);
-      break;
+  if (sort.name != 'quickSort') {
+    sort([...array]);
+  } else {
+    sort([...array], 0, [...array].length - 1);
   }
   const t1 = performance.now();
-
   return `
   <p>
-    <span style="font-size: 24px;">${fnString}ing</span> ${
+    <span style="font-size: 24px;">${sort.name}ing</span> ${
     array.length
   } elements took ${t1 - t0} milliseconds.
   </p>
