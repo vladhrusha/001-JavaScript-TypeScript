@@ -1,0 +1,143 @@
+:root {
+    --blue: #558193;
+    --green: #00BB92;
+    --grey-light: #D6D6D6;
+    --grey: #bab5b5;
+    --grey-dark: #666;
+    --white: #FCFCFC;
+}
+
+body {
+    background-color: var(--blue);
+    display: flex;
+    justify-content: center;
+}
+
+.account-create {
+    background-color: var(--white);
+    width: 860px;
+    border-radius: 2%;
+
+}
+
+.account-create div {
+    margin: 15px;
+}
+
+.account-create input[type="text"],
+input[type="password"],
+textarea {
+    border-radius: 5px;
+    border-color: var(--grey-light);
+    width: 365px;
+    height: 35px;
+    font-size: large;
+    padding: 5px 10px;
+}
+
+label {
+    color: var(--green);
+    font-size: x-large;
+    font-weight: 550;
+}
+
+.break {
+    flex-basis: 100%;
+    height: 0;
+}
+
+input+label {
+    color: var(--grey-dark);
+    font-weight: 500;
+}
+
+
+.heading {
+    display: flex;
+    justify-content: center;
+    font-size: x-large;
+    color: var(--grey-dark);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.container input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+    color: var(--grey);
+}
+
+.authorization-fields>div {
+    display: flex;
+    justify-content: center;
+}
+
+
+.emails {
+    display: flex;
+    flex-direction: column;
+}
+
+.emails input[type="text"] {
+    width: 780px;
+}
+
+
+.personal-info>div {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.income select {
+    width: 300px;
+    height: 35px;
+    border-radius: 5px;
+    border-color: var(--grey-light);
+    font-size: large;
+}
+
+.income div {
+    width: 360px;
+}
+
+.income div .slider {
+    width: 280px;
+    accent-color: grey;
+
+}
+
+.income output {
+    background-color: #00BB92;
+    padding: 7px 7px;
+    color: white;
+    border-radius: 5px;
+    font-size: x-large;
+
+}
+
+.personal-info .input-file {
+    font-size: large;
+}
+
+.bio textarea {
+    width: 810px;
+    height: 100px;
+}
+
+.submit-button {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 50px;
+}
+
+.submit-button input {
+    background-color: var(--green);
+    padding: 10px 15px;
+    border-radius: 7px;
+    border-color: var(--green);
+    color: var(--white);
+    font-size: x-large;
+}
