@@ -1,5 +1,5 @@
 class Validator {
-  isEmail(email) {
+  static isEmail(email) {
     let mailFormat =
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     if (email.match(mailFormat)) {
@@ -9,13 +9,13 @@ class Validator {
     }
   }
 
-  isDate(date) {
+  static isDate(date) {
     if (!Number.isNaN(Date.parse(date))) {
       return true;
     } else return false;
   }
 
-  isRequired(input) {
+  static isRequired(input) {
     if (input.value == '') {
       console.log(`${input.name} is required`);
       return false;
