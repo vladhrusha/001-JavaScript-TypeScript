@@ -5,16 +5,16 @@ form.addEventListener('submit', validateForm);
 
 function validateForm(form) {
   form.preventDefault();
-  let email = document.forms['account-create']['email'].value;
-  let date = document.forms['account-create']['date'].value;
+  let email = document.forms['account-create']['email'];
+  let date = document.forms['account-create']['date'];
 
-  if (Validator.isEmail(email)) {
-    console.log('Email is valid');
-  } else console.log('Email is not valid');
+  if (Validator.isEmail(email.value)) {
+    email.style.border = '';
+  } else email.style.border = '5px solid red';
 
-  if (Validator.isDate(date)) {
-    console.log('Date is valid');
-  } else console.log('Date is not valid');
+  if (Validator.isDate(date.value)) {
+    date.style.border = '';
+  } else date.style.border = '5px solid red';
 
   Validator.isRequired(document.forms['account-create']['FirstName']);
   Validator.isRequired(document.forms['account-create']['PasswordOne']);
