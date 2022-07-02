@@ -10,7 +10,7 @@ class Validator {
   }
 
   static isRequired(input) {
-    if (input.value == '') {
+    if (!input.value) {
       input.style.border = '5px solid orange';
     } else input.style.border = '';
   }
