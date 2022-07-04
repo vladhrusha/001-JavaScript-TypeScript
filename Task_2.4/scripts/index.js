@@ -1,12 +1,15 @@
 import { Validator } from './Classes/validator.js';
 
 let form = document.querySelector('.account-create');
-form.addEventListener('submit', validateForm);
+form.addEventListener('submit', onValidateForm);
+form.parameterX = form;
 
-function validateForm(form) {
-  form.preventDefault();
-  let email = document.forms['account-create']['email'];
-  let date = document.forms['account-create']['date'];
+function onValidateForm(event) {
+  event.preventDefault();
+  form = event.currentTarget.parameterX;
+
+  let email = form.email;
+  let date = form.date;
 
   if (Validator.isEmail(email.value)) {
     email.style.border = '';
@@ -16,7 +19,7 @@ function validateForm(form) {
     date.style.border = '';
   } else date.style.border = '5px solid red';
 
-  Validator.isRequired(document.forms['account-create']['FirstName']);
-  Validator.isRequired(document.forms['account-create']['PasswordOne']);
-  Validator.isRequired(document.forms['account-create']['PasswordConfirm']);
+  Validator.isRequired(form.FirstName);
+  Validator.isRequired(form.PasswordOne);
+  Validator.isRequired(form.PasswordConfirm);
 }
