@@ -2,12 +2,85 @@
 <html>
   <head>
     <title>Weather App</title>
-    <link rel="stylesheet" src="styles/index.css" />
-    <link rel="icon" src="fav.ico" />
-    <meta chartset="utf-8" />
+    <link rel="stylesheet" href="styles/index.css" />
+    <!-- <link rel="icon" src="fav.ico" /> -->
+    <meta charset="utf-8" />
   </head>
   <body>
-    <section></section>
+    <section class="section">
+      <nav class="nav">
+        <form class="form">
+          <input
+            type="text"
+            class="nav__search"
+            id="nav-search"
+            name="search"
+            placeholder="Kyiv"
+          />
+          <label>Selected:</label>
+        </form>
+      </nav>
+
+      <table class="table">
+        <thead class="table__head">
+          <tr class="header">
+            <th class="th__temperature">
+              <h1>-5</h1>
+              <span>Feels like</span>
+            </th>
+            <th class="th__2"><h7>clouds</h7> <span>place</span></th>
+            <th><div>image</div></th>
+          </tr>
+        </thead>
+        <tbody class="table__body">
+          <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td class="td__temperature">
+              <p>3</p>
+              <p>8</p>
+            </td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td class="td__temperature">
+              <p>3</p>
+              <p>8</p>
+            </td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td class="td__temperature">
+              <p>3</p>
+              <p>8</p>
+            </td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td class="td__temperature">
+              <p>3</p>
+              <p>8</p>
+            </td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td class="td__temperature">
+              <p>3</p>
+              <p>8</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
     <script src="scripts/index.js"></script>
   </body>
 </html>

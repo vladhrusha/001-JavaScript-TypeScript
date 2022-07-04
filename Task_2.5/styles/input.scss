@@ -1,0 +1,82 @@
+$background-color: #4299E1;
+$tableRow-color: #2D3748;
+$tableHeader-color: #1A202C;
+
+
+body {
+    background-color: $background-color;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+.section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+.nav {
+    height: 10%;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    .nav__search{
+        height: 30px;
+    
+    }
+
+    
+}
+
+.table {
+    background-color: $tableRow-color;
+    color: white;
+    width: 375px;
+    height: 60% ;
+    border-radius: 10px;
+}
+
+.table__head {
+    height: 2%;
+}
+tr.header {
+    background-color: $tableHeader-color;
+    height: 100% !important;
+    th {
+        height: 100%;
+        width: 33%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .th__temperature{
+        display: flex;
+        flex-direction: column;
+    }
+    .th__2{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.table__body {
+    height: 75%;
+}
+.table tr {
+    height: 20%;
+    display: flex;
+    justify-content: space-between;
+    td {
+        width: 25%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .td__temperature{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
