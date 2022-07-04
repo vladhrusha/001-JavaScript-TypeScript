@@ -2,11 +2,9 @@ import { Validator } from './Classes/validator.js';
 
 let form = document.querySelector('.account-create');
 form.addEventListener('submit', onValidateForm);
-form.parameterX = form;
 
 function onValidateForm(event) {
   event.preventDefault();
-  form = event.currentTarget.parameterX;
 
   let email = form.email;
   let date = form.date;
