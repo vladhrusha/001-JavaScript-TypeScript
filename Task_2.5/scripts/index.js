@@ -4,16 +4,11 @@ form.addEventListener('submit', citySearch);
 
 citySearch();
 
-// if (navigator.geolocation) {
-//     navigator.geolocation.getCurrentPosition(function (position) {
-//       let location = position.coords;
-//     });
-// }
-
 function citySearch(event) {
   if (event) {
     event.preventDefault();
   }
+
   let input = form.search.value.split(', ');
   let city = input[0];
   let areaCode = input[1];
@@ -24,9 +19,11 @@ function citySearch(event) {
   document.querySelector(
     '.nav__label'
   ).innerHTML = `Selected: ${city}, ${areaCode}`;
-  table.innerHTML = '';
-  fetchCurrentData(currentWeatherAPIcall);
 
+  table.innerHTML = '';
+  //add current weather
+  fetchCurrentData(currentWeatherAPIcall);
+  //add forecast
   fetch(geocodingAPIcall)
     .then((response) => response.json())
     .then((geolocationData) => {
@@ -62,7 +59,7 @@ function fetchForecastData(oneAPIcall) {
     .then((response) => response.json())
     .then((forecastData) => {
       let tableRowInfo = {};
-      let tableBody = '';
+      let tableBody = `<tbody>`;
       forecastData.daily.forEach((day, i) => {
         if (i < 5) {
           tableRowInfo.weatherDescription = day.weather[0].description;
@@ -73,15 +70,11 @@ function fetchForecastData(oneAPIcall) {
           tableRowInfo.day = new Date(day.dt * 1000).toLocaleString('default', {
             weekday: 'long',
           });
-          if (i == 0) {
-            tableBody += `<tbody>`;
-          }
           tableBody += addTableBodyRow(tableRowInfo);
-          if (i == 4) {
-            tableBody += `</tbody>`;
-          }
         }
       });
+
+      tableBody += `</tbody>`;
       table.innerHTML += tableBody;
     });
 }
