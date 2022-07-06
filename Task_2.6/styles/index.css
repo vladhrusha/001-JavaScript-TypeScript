@@ -17,7 +17,7 @@ body {
 .todo .h1 {
   margin-top: 50px;
 }
-.todo > .button {
+.todo .clearButton {
   background-color: inherit;
   border: 0;
   color: #E66E6D;
@@ -40,6 +40,9 @@ body {
   border: 0;
   background-color: #F1F5F8;
   position: relative;
+}
+.todo__form .input:focus {
+  outline: none;
 }
 .todo__form .button {
   width: 50px;

@@ -3,40 +3,30 @@
   <head>
     <title>Todo List</title>
     <link rel="stylesheet" href="./styles/index.css" />
+    <meta charset="utf-8" />
+    <link rel="icon" href="../fav.ico" />
   </head>
   <body>
     <section class="todo">
       <h1 class="h1">Grocery Bud</h1>
-      <form class="todo__form">
-        <input type="text" placeholder="e.g. eggs" class="input" />
-        <button type="submit" class="button">Edit</button>
+      <form class="todo__form" onkeypress="return event.keyCode != 13;">
+        <input
+          type="text"
+          placeholder="e.g. eggs"
+          class="input"
+          name="input"
+          value="dummy"
+        />
+        <button type="submit" class="button" name="button">Edit</button>
       </form>
       <table class="table">
-        <tbody>
-          <tr class="table__row">
-            <td>Test</td>
-            <td>
-              <img class="image" src="./images/notes.png" />
-              <img class="image" src="./images/trash.png" />
-            </td>
-          </tr>
-          <tr class="table__row">
-            <td>Test</td>
-            <td>
-              <img class="image" src="./images/notes.png" />
-              <img class="image" src="./images/trash.png" />
-            </td>
-          </tr>
-          <tr class="table__row">
-            <td>Test</td>
-            <td>
-              <img class="image" src="./images/notes.png" />
-              <img class="image" src="./images/trash.png" />
-            </td>
-          </tr>
-        </tbody>
+        <tbody></tbody>
       </table>
-      <button type="submit" class="button">Clear Items</button>
+      <button class="clearButton">Clear Items</button>
     </section>
+    <script>
+      var exports = {};
+    </script>
+    <script type="module" src="./scripts/index.js"></script>
   </body>
 </html>
