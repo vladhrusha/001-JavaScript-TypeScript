@@ -2,6 +2,7 @@ import {
   addCurrentWeather,
   insertForecast,
 } from './OpenWeather/fetchingOpenWeatherData.js';
+import { APIkey, API_URL } from './fetchData.js';
 
 const form = document.querySelector('.form');
 form.addEventListener('submit', citySearch);
@@ -23,17 +24,14 @@ function citySearch(event) {
   }
   let city = input[0];
   let areaCode = input[1];
-  const APIkey = '73ff54cf7854273a427a0750b527fac9';
-  const API_URL = 'https://api.openweathermap.org';
+
   const currentWeatherURL = `${API_URL}/data/2.5/weather?units=metric&q=${city}&appid=${APIkey}`;
   const geocodingURL = `${API_URL}/geo/1.0/direct?q=${city},${areaCode}&limit=1&appid=${APIkey}`;
 
-  if (typeof areaCode === 'string') {
-    if (areaCode.length == 2) {
-      document.querySelector(
-        '.nav__label'
-      ).innerHTML = `Selected: ${city}, ${regionNames.of(areaCode)}`;
-    }
+  if (typeof areaCode === 'string' && areaCode.length == 2) {
+    document.querySelector(
+      '.nav__label'
+    ).innerHTML = `Selected: ${city}, ${regionNames.of(areaCode)}`;
   }
 
   table.innerHTML = '';
