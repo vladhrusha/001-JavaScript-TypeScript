@@ -1,5 +1,6 @@
 const form = document.querySelector('.form');
 const table = document.querySelector('table');
+let regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
 form.addEventListener('submit', citySearch);
 
 citySearch();
@@ -18,7 +19,7 @@ function citySearch(event) {
 
   document.querySelector(
     '.nav__label'
-  ).innerHTML = `Selected: ${city}, ${areaCode}`;
+  ).innerHTML = `Selected: ${city}, ${regionNames.of(areaCode)}`;
 
   table.innerHTML = '';
   //add current weather
@@ -49,7 +50,6 @@ function fetchCurrentData(currentWeatherAPIcall) {
         currentWeatherData.main.feels_like
       );
       tableRowData.city = currentWeatherData.name;
-      let regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
       tableRowData.country = regionNames.of(currentWeatherData.sys.country);
       addTableHead(tableRowData);
     });
