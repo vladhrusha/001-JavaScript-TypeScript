@@ -1,4 +1,3 @@
-const APIkey = '73ff54cf7854273a427a0750b527fac9';
 const form = document.querySelector('.form');
 const table = document.querySelector('table');
 form.addEventListener('submit', citySearch);
@@ -15,24 +14,30 @@ function citySearch(event) {
   if (event) {
     event.preventDefault();
   }
+  const APIkey = '73ff54cf7854273a427a0750b527fac9';
   let input = form.search.value;
   let inputArray = input.split(', ');
   let city = inputArray[0];
   let areaCode = inputArray[1];
-  document.querySelector('.label--selected').innerHTML = `Selected: ${city}`;
-  currentWeatherAPIcall = `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${city}&appid=${APIkey}`;
+  document.querySelector(
+    '.nav__label'
+  ).innerHTML = `Selected: ${city}, ${areaCode}`;
+  const currentWeatherAPIcall = `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${city}&appid=${APIkey}`;
   table.innerHTML = '';
   fetchCurrentData(currentWeatherAPIcall);
 
-  geocodingAPIcall = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${areaCode}&limit=1&appid=${APIkey}`;
+  const geocodingAPIcall = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${areaCode}&limit=1&appid=${APIkey}`;
 
   fetch(geocodingAPIcall)
     .then((response) => response.json())
     .then((geolocationData) => {
       let lat = geolocationData[0].lat;
       let lon = geolocationData[0].lon;
-      oneAPIcall = `https://api.openweathermap.org/data/3.0/onecall?units=metric&lat=${lat}&lon=${lon}&exclude=hourly, current, minutely, alerts&appid=${APIkey}`;
+      const oneAPIcall = `https://api.openweathermap.org/data/3.0/onecall?units=metric&lat=${lat}&lon=${lon}&exclude=hourly, current, minutely, alerts&appid=${APIkey}`;
       fetchForecastData(oneAPIcall);
+    })
+    .catch((error) => {
+      alert('Invalid City');
     });
 }
 
