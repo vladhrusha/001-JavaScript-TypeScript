@@ -1,0 +1,97 @@
+$background-color: #4299E1;
+$tableRow-color: #2D3748;
+$tableHeader-color: #1A202C;
+
+
+body {
+    background-color: $background-color;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+.section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+.nav {
+    height: 10%;
+    .form {
+        display: flex;
+        flex-direction: column;
+        .nav__search {
+            height: 30px;
+        }
+        .nav__button {
+            background-color: gray;
+        }
+    }
+
+
+}
+
+
+.table {
+    background-color: $tableRow-color;
+    color: white;
+    width: 500px;
+    height: 80% ;
+    border-radius: 10px;
+    .table__head {
+        height: 15%;
+    }
+    .table__body {
+        height: 85%;
+    }
+}
+
+
+.header__row {
+    background-color: $tableHeader-color;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    .th {
+        height: 100%;
+        width: 33%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .th:nth-of-type(2) {
+        display: flex;
+        flex-direction: column;
+    }
+    .th__temp{
+        display: flex;
+        flex-direction: column;
+        .thermometer__temp{
+            font-size: 30px;
+        }
+    }
+
+}
+
+.body__row {
+    height: 20%;
+    display: flex;
+    justify-content: space-between;
+    .td {
+        width: 25%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .td__day {
+        font-size: 20px;
+    }
+    .td__temp{
+        display: flex;
+        flex-direction: column;
+        font-size: 18px;
+        line-height: 1.5;
+    }
+}
+

@@ -1,0 +1,90 @@
+body {
+  background-color: #4299E1;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.nav {
+  height: 10%;
+}
+.nav .form {
+  display: flex;
+  flex-direction: column;
+}
+.nav .form .nav__search {
+  height: 30px;
+}
+.nav .form .nav__button {
+  background-color: gray;
+}
+
+.table {
+  background-color: #2D3748;
+  color: white;
+  width: 500px;
+  height: 80%;
+  border-radius: 10px;
+}
+.table .table__head {
+  height: 15%;
+}
+.table .table__body {
+  height: 85%;
+}
+
+.header__row {
+  background-color: #1A202C;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.header__row .th {
+  height: 100%;
+  width: 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header__row .th:nth-of-type(2) {
+  display: flex;
+  flex-direction: column;
+}
+.header__row .th__temp {
+  display: flex;
+  flex-direction: column;
+}
+.header__row .th__temp .thermometer__temp {
+  font-size: 30px;
+}
+
+.body__row {
+  height: 20%;
+  display: flex;
+  justify-content: space-between;
+}
+.body__row .td {
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.body__row .td__day {
+  font-size: 20px;
+}
+.body__row .td__temp {
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/*# sourceMappingURL=index.css.map */
