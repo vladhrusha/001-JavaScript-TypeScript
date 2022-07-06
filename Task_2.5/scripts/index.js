@@ -1,10 +1,11 @@
 import {
   addCurrentWeather,
-  addForecast,
+  insertForecast,
 } from './OpenWeather/fetchingOpenWeatherData.js';
 
 const form = document.querySelector('.form');
 form.addEventListener('submit', citySearch);
+const table = document.querySelector('table');
 
 citySearch();
 
@@ -15,7 +16,6 @@ function citySearch(event) {
 
   let regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
 
-  const table = document.querySelector('table');
   let hasNumber = /\d/;
   let input = '';
   if (!hasNumber.test(form.search.value)) {
@@ -24,9 +24,9 @@ function citySearch(event) {
   let city = input[0];
   let areaCode = input[1];
   const APIkey = '73ff54cf7854273a427a0750b527fac9';
-
-  const currentWeatherAPIcall = `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${city}&appid=${APIkey}`;
-  const geocodingAPIcall = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${areaCode}&limit=1&appid=${APIkey}`;
+  const API_URL = 'https://api.openweathermap.org';
+  const currentWeatherURL = `${API_URL}/data/2.5/weather?units=metric&q=${city}&appid=${APIkey}`;
+  const geocodingURL = `${API_URL}/geo/1.0/direct?q=${city},${areaCode}&limit=1&appid=${APIkey}`;
 
   if (typeof areaCode === 'string') {
     if (areaCode.length == 2) {
@@ -38,17 +38,17 @@ function citySearch(event) {
 
   table.innerHTML = '';
   //add current weather
-  addCurrentWeather(currentWeatherAPIcall, table);
+  addCurrentWeather(currentWeatherURL, table);
   //add forecast
-  fetch(geocodingAPIcall)
-    .then((response) => response.json())
-    .then((geolocationData) => {
-      let lat = geolocationData[0].lat;
-      let lon = geolocationData[0].lon;
-      const oneAPIcall = `https://api.openweathermap.org/data/3.0/onecall?units=metric&lat=${lat}&lon=${lon}&exclude=hourly, current, minutely, alerts&appid=${APIkey}`;
-      addForecast(oneAPIcall, table);
-    })
-    .catch((error) => {
-      alert('Invalid City');
-    });
+  addForecast(geocodingURL, API_URL, APIkey);
+}
+
+async function addForecast(geocodingURL, API_URL, APIkey) {
+  let response = await fetch(geocodingURL);
+  let geolocationData = await response.json();
+
+  let lat = geolocationData[0].lat;
+  let lon = geolocationData[0].lon;
+  const oneCallURL = `${API_URL}/data/3.0/onecall?units=metric&lat=${lat}&lon=${lon}&exclude=hourly, current, minutely, alerts&appid=${APIkey}`;
+  insertForecast(oneCallURL, table);
 }
