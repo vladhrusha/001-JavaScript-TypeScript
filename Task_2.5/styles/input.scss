@@ -18,17 +18,20 @@ body {
 }
 .nav {
     height: 10%;
+    .form {
+        display: flex;
+        flex-direction: column;
+        .nav__search {
+            height: 30px;
+        }
+        .nav__button {
+            background-color: gray;
+        }
+    }
+
+
 }
-.form {
-    display: flex;
-    flex-direction: column;
-    .nav__search{
-        height: 30px;
-    }   
-}
-.nav__button{
-    background-color: gray;
-}
+
 
 .table {
     background-color: $tableRow-color;
@@ -36,12 +39,16 @@ body {
     width: 500px;
     height: 80% ;
     border-radius: 10px;
+    .table__head {
+        height: 15%;
+    }
+    .table__body {
+        height: 85%;
+    }
 }
 
-.table__head {
-    height: 15%;
-}
-.header {
+
+.header__row {
     background-color: $tableHeader-color;
     height: 100%;
     display: flex;
@@ -53,22 +60,20 @@ body {
         justify-content: center;
         align-items: center;
     }
-    .th__temperature{
+    .th:nth-of-type(2) {
         display: flex;
         flex-direction: column;
-        .thermometer__temperature{
+    }
+    .th__temp{
+        display: flex;
+        flex-direction: column;
+        .thermometer__temp{
             font-size: 30px;
         }
     }
-    .th__2{
-        display: flex;
-        flex-direction: column;
-    }
+
 }
 
-.table__body {
-    height: 85%;
-}
 .body__row {
     height: 20%;
     display: flex;
@@ -82,7 +87,7 @@ body {
     .td__day {
         font-size: 20px;
     }
-    .td__temperature{
+    .td__temp{
         display: flex;
         flex-direction: column;
         font-size: 18px;

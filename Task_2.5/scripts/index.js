@@ -14,19 +14,18 @@ function citySearch(event) {
   if (event) {
     event.preventDefault();
   }
+  let input = form.search.value.split(', ');
+  let city = input[0];
+  let areaCode = input[1];
   const APIkey = '73ff54cf7854273a427a0750b527fac9';
-  let input = form.search.value;
-  let inputArray = input.split(', ');
-  let city = inputArray[0];
-  let areaCode = inputArray[1];
+  const currentWeatherAPIcall = `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${city}&appid=${APIkey}`;
+  const geocodingAPIcall = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${areaCode}&limit=1&appid=${APIkey}`;
+
   document.querySelector(
     '.nav__label'
   ).innerHTML = `Selected: ${city}, ${areaCode}`;
-  const currentWeatherAPIcall = `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${city}&appid=${APIkey}`;
   table.innerHTML = '';
   fetchCurrentData(currentWeatherAPIcall);
-
-  const geocodingAPIcall = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${areaCode}&limit=1&appid=${APIkey}`;
 
   fetch(geocodingAPIcall)
     .then((response) => response.json())
@@ -98,12 +97,12 @@ function composeTable(tableRowInfo, isHead) {
 function composeTableHead(tableRowInfo) {
   return `
     <thead class="table__head">
-       <tr class="header">
-          <th class="th th__temperature">
-              <h1 class="thermometer__temperature">${tableRowInfo.temperature}°C</h1>
+       <tr class="header__row">
+          <th class="th th__temp">
+              <h1 class="thermometer__temp">${tableRowInfo.temperature}°C</h1>
               <span>Feels like ${tableRowInfo.temperatureFellsLike}°C</span>
          </th>
-        <th class="th th__2"><h3>${tableRowInfo.weatherMain}</h3> <span>${tableRowInfo.city}, ${tableRowInfo.country}</span></th>
+        <th class="th"><h3>${tableRowInfo.weatherMain}</h3> <span>${tableRowInfo.city}, ${tableRowInfo.country}</span></th>
         <th class="th"><img src="http://openweathermap.org/img/wn/${tableRowInfo.icon}@2x.png" alt="${tableRowInfo.weatherMain}"></th>
        </tr>
      </thead>`;
@@ -113,7 +112,7 @@ function composeTableBodyRow(tableRowInfo) {
   <td class="td td__day">${tableRowInfo.day}</td>
   <td class="td"><img src="http://openweathermap.org/img/wn/${tableRowInfo.icon}@2x.png" alt="${tableRowInfo.weatherMain}"></td>
   <td class="td">${tableRowInfo.weatherDescription}</td>
-  <td class="td td__temperature">
+  <td class="td td__temp">
   <span>${tableRowInfo.temperatureMax}°C</span>
   <span>${tableRowInfo.temperatureMin}°C</span>
   </td>
