@@ -53,7 +53,7 @@ function fetchCurrentData(currentWeatherAPIcall) {
       );
       tableRowInfo.city = currentWeatherData.name;
       tableRowInfo.country = currentWeatherData.sys.country;
-      composeTable(tableRowInfo, true);
+      addTableHead(tableRowInfo);
     });
 }
 
@@ -76,7 +76,7 @@ function fetchForecastData(oneAPIcall) {
           if (i == 0) {
             tableBody += `<tbody>`;
           }
-          tableBody += composeTable(tableRowInfo, false);
+          tableBody += addTableBodyRow(tableRowInfo);
           if (i == 4) {
             tableBody += `</tbody>`;
           }
@@ -86,16 +86,8 @@ function fetchForecastData(oneAPIcall) {
     });
 }
 
-function composeTable(tableRowInfo, isHead) {
-  if (isHead) {
-    table.innerHTML += composeTableHead(tableRowInfo);
-  } else {
-    return composeTableBodyRow(tableRowInfo);
-  }
-}
-
-function composeTableHead(tableRowInfo) {
-  return `
+function addTableHead(tableRowInfo) {
+  table.innerHTML += `
     <thead class="table__head">
        <tr class="header__row">
           <th class="th th__temp">
@@ -107,7 +99,7 @@ function composeTableHead(tableRowInfo) {
        </tr>
      </thead>`;
 }
-function composeTableBodyRow(tableRowInfo) {
+function addTableBodyRow(tableRowInfo) {
   return `<tr class="body__row">
   <td class="td td__day">${tableRowInfo.day}</td>
   <td class="td"><img src="http://openweathermap.org/img/wn/${tableRowInfo.icon}@2x.png" alt="${tableRowInfo.weatherMain}"></td>
