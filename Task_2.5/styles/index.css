@@ -25,60 +25,70 @@ body {
   height: 30px;
 }
 
-button {
-  height: 30px;
+.nav__button {
+  background-color: gray;
 }
 
 .table {
   background-color: #2D3748;
   color: white;
-  width: 375px;
-  height: 60%;
+  width: 500px;
+  height: 80%;
   border-radius: 10px;
 }
 
 .table__head {
-  height: 2%;
+  height: 15%;
 }
 
-tr.header {
+.header {
   background-color: #1A202C;
-  height: 100% !important;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
 }
-tr.header th {
+.header .th {
   height: 100%;
   width: 33%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-tr.header .th__temperature {
+.header .th__temperature {
   display: flex;
   flex-direction: column;
 }
-tr.header .th__2 {
+.header .th__temperature .thermometer__temperature {
+  font-size: 30px;
+}
+.header .th__2 {
   display: flex;
   flex-direction: column;
 }
 
 .table__body {
-  height: 75%;
+  height: 85%;
 }
 
-.table tr {
+.body__row {
   height: 20%;
   display: flex;
   justify-content: space-between;
 }
-.table tr td {
+.body__row .td {
   width: 25%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.table tr .td__temperature {
+.body__row .td__day {
+  font-size: 20px;
+}
+.body__row .td__temperature {
   display: flex;
   flex-direction: column;
+  font-size: 18px;
+  line-height: 1.5;
 }
 
 /*# sourceMappingURL=index.css.map */

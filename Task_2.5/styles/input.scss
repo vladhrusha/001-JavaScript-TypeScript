@@ -24,30 +24,29 @@ body {
     flex-direction: column;
     .nav__search{
         height: 30px;
-    
-    }
-
-    
+    }   
 }
-button {
-    height: 30px;
+.nav__button{
+    background-color: gray;
 }
 
 .table {
     background-color: $tableRow-color;
     color: white;
-    width: 375px;
-    height: 60% ;
+    width: 500px;
+    height: 80% ;
     border-radius: 10px;
 }
 
 .table__head {
-    height: 2%;
+    height: 15%;
 }
-tr.header {
+.header {
     background-color: $tableHeader-color;
-    height: 100% !important;
-    th {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    .th {
         height: 100%;
         width: 33%;
         display: flex;
@@ -57,6 +56,9 @@ tr.header {
     .th__temperature{
         display: flex;
         flex-direction: column;
+        .thermometer__temperature{
+            font-size: 30px;
+        }
     }
     .th__2{
         display: flex;
@@ -65,21 +67,26 @@ tr.header {
 }
 
 .table__body {
-    height: 75%;
+    height: 85%;
 }
-.table tr {
+.body__row {
     height: 20%;
     display: flex;
     justify-content: space-between;
-    td {
+    .td {
         width: 25%;
         display: flex;
         justify-content: center;
         align-items: center;
     }
+    .td__day {
+        font-size: 20px;
+    }
     .td__temperature{
         display: flex;
         flex-direction: column;
+        font-size: 18px;
+        line-height: 1.5;
     }
 }
 
