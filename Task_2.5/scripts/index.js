@@ -41,16 +41,16 @@ function fetchCurrentData(currentWeatherAPIcall) {
   fetch(currentWeatherAPIcall)
     .then((response) => response.json())
     .then((currentWeatherData) => {
-      let tableRowInfo = {};
-      tableRowInfo.weatherMain = currentWeatherData.weather[0].main;
-      tableRowInfo.icon = currentWeatherData.weather[0].icon;
-      tableRowInfo.temperature = Math.round(currentWeatherData.main.temp);
-      tableRowInfo.temperatureFellsLike = Math.round(
+      let tableRowData = {};
+      tableRowData.weatherMain = currentWeatherData.weather[0].main;
+      tableRowData.icon = currentWeatherData.weather[0].icon;
+      tableRowData.temperature = Math.round(currentWeatherData.main.temp);
+      tableRowData.temperatureFellsLike = Math.round(
         currentWeatherData.main.feels_like
       );
-      tableRowInfo.city = currentWeatherData.name;
-      tableRowInfo.country = currentWeatherData.sys.country;
-      addTableHead(tableRowInfo);
+      tableRowData.city = currentWeatherData.name;
+      tableRowData.country = currentWeatherData.sys.country;
+      addTableHead(tableRowData);
     });
 }
 
@@ -58,19 +58,19 @@ function fetchForecastData(oneAPIcall) {
   fetch(oneAPIcall)
     .then((response) => response.json())
     .then((forecastData) => {
-      let tableRowInfo = {};
+      let tableRowData = {};
       let tableBody = `<tbody>`;
       forecastData.daily.forEach((day, i) => {
         if (i < 5) {
-          tableRowInfo.weatherDescription = day.weather[0].description;
-          tableRowInfo.weatherMain = day.weather[0].main;
-          tableRowInfo.icon = day.weather[0].icon;
-          tableRowInfo.temperatureMax = Math.round(day.temp.max);
-          tableRowInfo.temperatureMin = Math.round(day.temp.min);
-          tableRowInfo.day = new Date(day.dt * 1000).toLocaleString('default', {
-            weekday: 'long',
+          tableRowData.weatherDescription = day.weather[0].description;
+          tableRowData.weatherMain = day.weather[0].main;
+          tableRowData.icon = day.weather[0].icon;
+          tableRowData.temperatureMax = Math.round(day.temp.max);
+          tableRowData.temperatureMin = Math.round(day.temp.min);
+          tableRowData.day = new Date(day.dt * 1000).toLocaleString('default', {
+            weekday: 'short',
           });
-          tableBody += addTableBodyRow(tableRowInfo);
+          tableBody += addTableBodyRow(tableRowData);
         }
       });
 
@@ -79,27 +79,27 @@ function fetchForecastData(oneAPIcall) {
     });
 }
 
-function addTableHead(tableRowInfo) {
+function addTableHead(tableRowData) {
   table.innerHTML += `
     <thead class="table__head">
        <tr class="header__row">
           <th class="th th__temp">
-              <h1 class="thermometer__temp">${tableRowInfo.temperature}°C</h1>
-              <span>Feels like ${tableRowInfo.temperatureFellsLike}°C</span>
+              <h1 class="thermometer__temp">${tableRowData.temperature}°C</h1>
+              <span>Feels like ${tableRowData.temperatureFellsLike}°C</span>
          </th>
-        <th class="th"><h3>${tableRowInfo.weatherMain}</h3> <span>${tableRowInfo.city}, ${tableRowInfo.country}</span></th>
-        <th class="th"><img src="http://openweathermap.org/img/wn/${tableRowInfo.icon}@2x.png" alt="${tableRowInfo.weatherMain}"></th>
+        <th class="th"><h3>${tableRowData.weatherMain}</h3> <span>${tableRowData.city}, ${tableRowData.country}</span></th>
+        <th class="th"><img src="http://openweathermap.org/img/wn/${tableRowData.icon}@2x.png" alt="${tableRowData.weatherMain}"></th>
        </tr>
      </thead>`;
 }
-function addTableBodyRow(tableRowInfo) {
+function addTableBodyRow(tableRowData) {
   return `<tr class="body__row">
-  <td class="td td__day">${tableRowInfo.day}</td>
-  <td class="td"><img src="http://openweathermap.org/img/wn/${tableRowInfo.icon}@2x.png" alt="${tableRowInfo.weatherMain}"></td>
-  <td class="td">${tableRowInfo.weatherDescription}</td>
+  <td class="td td__day">${tableRowData.day}</td>
+  <td class="td"><img src="http://openweathermap.org/img/wn/${tableRowData.icon}@2x.png" alt="${tableRowData.weatherMain}"></td>
+  <td class="td">${tableRowData.weatherDescription}</td>
   <td class="td td__temp">
-  <span>${tableRowInfo.temperatureMax}°C</span>
-  <span>${tableRowInfo.temperatureMin}°C</span>
+  <span>${tableRowData.temperatureMax}°C</span>
+  <span>${tableRowData.temperatureMin}°C</span>
   </td>
   </tr>`;
 }
