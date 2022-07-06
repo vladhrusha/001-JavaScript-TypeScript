@@ -49,7 +49,8 @@ function fetchCurrentData(currentWeatherAPIcall) {
         currentWeatherData.main.feels_like
       );
       tableRowData.city = currentWeatherData.name;
-      tableRowData.country = currentWeatherData.sys.country;
+      let regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
+      tableRowData.country = regionNames.of(currentWeatherData.sys.country);
       addTableHead(tableRowData);
     });
 }
