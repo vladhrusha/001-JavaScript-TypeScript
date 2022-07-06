@@ -25,9 +25,13 @@ function citySearch(event) {
   const currentWeatherAPIcall = `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${city}&appid=${APIkey}`;
   const geocodingAPIcall = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${areaCode}&limit=1&appid=${APIkey}`;
 
-  document.querySelector(
-    '.nav__label'
-  ).innerHTML = `Selected: ${city}, ${regionNames.of(areaCode)}`;
+  if (typeof areaCode === 'string') {
+    if (areaCode.length == 2) {
+      document.querySelector(
+        '.nav__label'
+      ).innerHTML = `Selected: ${city}, ${regionNames.of(areaCode)}`;
+    }
+  }
 
   table.innerHTML = '';
   //add current weather
