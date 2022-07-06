@@ -16,10 +16,13 @@ function citySearch(event) {
   let regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
 
   const table = document.querySelector('table');
-  let input = form.search.value.split(', ');
+  let hasNumber = /\d/;
+  let input = '';
+  if (!hasNumber.test(form.search.value)) {
+    input = form.search.value.split(', ');
+  }
   let city = input[0];
   let areaCode = input[1];
-
   const APIkey = '73ff54cf7854273a427a0750b527fac9';
 
   const currentWeatherAPIcall = `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${city}&appid=${APIkey}`;
