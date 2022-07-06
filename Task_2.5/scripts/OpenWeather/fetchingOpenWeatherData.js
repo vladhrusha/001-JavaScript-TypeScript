@@ -4,9 +4,8 @@ import {
 } from '../Table/tableCreationFunctions.js';
 
 let regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
-const table = document.querySelector('table');
 
-function addCurrentWeather(currentWeatherAPIcall) {
+function addCurrentWeather(currentWeatherAPIcall, table) {
   fetch(currentWeatherAPIcall)
     .then((response) => response.json())
     .then((currentWeatherData) => {
@@ -23,7 +22,7 @@ function addCurrentWeather(currentWeatherAPIcall) {
     });
 }
 
-function addForecast(oneAPIcall) {
+function addForecast(oneAPIcall, table) {
   fetch(oneAPIcall)
     .then((response) => response.json())
     .then((forecastData) => {

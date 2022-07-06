@@ -27,7 +27,7 @@ function citySearch(event) {
 
   table.innerHTML = '';
   //add current weather
-  addCurrentWeather(currentWeatherAPIcall);
+  addCurrentWeather(currentWeatherAPIcall, table);
   //add forecast
   fetch(geocodingAPIcall)
     .then((response) => response.json())
@@ -35,7 +35,7 @@ function citySearch(event) {
       let lat = geolocationData[0].lat;
       let lon = geolocationData[0].lon;
       const oneAPIcall = `https://api.openweathermap.org/data/3.0/onecall?units=metric&lat=${lat}&lon=${lon}&exclude=hourly, current, minutely, alerts&appid=${APIkey}`;
-      addForecast(oneAPIcall);
+      addForecast(oneAPIcall, table);
     })
     .catch((error) => {
       alert('Invalid City');
