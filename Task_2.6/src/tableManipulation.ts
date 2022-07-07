@@ -1,5 +1,5 @@
-import {tableBody, form} from './index';
-
+import {tableBody, form} from './input';
+import {isEmptyOrWhitespaceOnly} from './utils';
 
 function onClearTable(){
     tableBody!.innerHTML = '';
@@ -18,7 +18,7 @@ function composeTableRow(inputText : string){
 }
 
 function clearRow(e : Event){
-    let currentTarget = <HTMLElement>e.currentTarget;
+    const currentTarget = <HTMLElement>e.currentTarget;
     currentTarget.parentElement?.parentElement?.remove()
 }
 
@@ -27,18 +27,14 @@ function editRow(e : Event){
     if (isEmptyOrWhitespaceOnly(inputText)){
         return;
     }
-    let td = (<HTMLElement>e.currentTarget).parentElement?.parentElement?.querySelector('.outputTd');
+    const td = (<HTMLElement>e.currentTarget).parentElement?.parentElement?.querySelector('.outputTd');
     td!.innerHTML = inputText;
 
     (<HTMLInputElement>form!.querySelector('.input')!).value = '';
 }
 
 
-function isEmptyOrWhitespaceOnly(str : string){
-    if (str == '' || str.trim().length === 0){
-        return true;
-    } return false;
-}
+
 
 export {onClearTable, clearRow, isEmptyOrWhitespaceOnly, composeTableRow, editRow};
 

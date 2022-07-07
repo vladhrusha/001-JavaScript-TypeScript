@@ -7,7 +7,8 @@ clearButton?.addEventListener('click', onClearTable);
 
 function onSubmit(e : Event) {
     e.preventDefault();
-    const inputText = (<HTMLInputElement>form!.querySelector('.input')!).value;
+    const input = <HTMLInputElement>form!.querySelector('.input');
+    const inputText = input.value;
     if (isEmptyOrWhitespaceOnly(inputText)){
         return;
     }
