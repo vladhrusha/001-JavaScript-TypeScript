@@ -1,6 +1,19 @@
+$darkMode-bodyBackgroundColor: #4c4c4c;
+$darkMode-countryBackgroundColor: #2c2c2c;
 body {
     margin: 0;
     background-color: lightgray;
+}
+.darkMode__body{
+    background-color: $darkMode-bodyBackgroundColor;
+    color: white;
+}
+.darkMode__element{
+    background-color: $darkMode-countryBackgroundColor !important;
+    color: white;
+}
+.darkMode__element::placeholder{
+    color: white;
 }
 
 .nav {
@@ -11,13 +24,13 @@ body {
     .h1{
         margin: 0;
         padding-top: 10px;
-        padding-left: 10px;
+        padding-left: 50px;
     }
     .displayMode{
         padding-top: 10px;
-        padding-right: 10px;
+        padding-right: 50px;
         .image{
-            width: 12px;
+            width: 16px;
         }
         .span{
 
@@ -28,22 +41,33 @@ body {
     display: flex;
     width: 100%;
     justify-content: space-around;
+    padding-top: 20px;
     .textInput{
         width: 60%;
         height: 25px;
+        padding: 5px;
     }
     .textInput:focus{
         outline: none;
     }
-    .select{
+    .divSelect {
+        display: flex;
         height: 28px;
+        .inputSelect:focus {
+            outline: none;
+        }
+            
+        .select {
+            height: 28px;
+        }
     }
+
 }
 
 
 
 .list{
-    padding-top: 50px;
+    padding-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -55,18 +79,21 @@ body {
     padding-bottom: 64px;
     .country{
         background-color: white;
-        border-radius: 20px;
-        z-index: 1;
+        border-radius: 50px;
+        width: 192px;
     }
     .country__flag{
         width: 192px;
+        height: 128px;
+        overflow: hidden;
     }
     .country__information{
         display: flex;
         flex-direction: column;
         padding: 20px;
+        font-weight: bold;
         .name{
-
+            margin-top: 0;
         }
         .population{
 
@@ -78,7 +105,7 @@ body {
 
         }
         .population,.region,.capital{
-            font-weight: bolder;
+            font-weight: normal;
         }
 
     }
