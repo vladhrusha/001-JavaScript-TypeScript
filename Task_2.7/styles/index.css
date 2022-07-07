@@ -1,3 +1,68 @@
+body {
+  margin: 0;
+  background-color: lightgray;
+}
 
+.nav__header {
+  display: flex;
+  justify-content: space-between;
+}
+.nav__header .h1 {
+  margin: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+.nav__header .displayMode {
+  padding-top: 10px;
+  padding-right: 10px;
+}
+.nav__header .displayMode .image {
+  width: 12px;
+}
+.nav__form {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+.nav__form .textInput {
+  width: 60%;
+  height: 25px;
+}
+.nav__form .textInput:focus {
+  outline: none;
+}
+.nav__form .select {
+  height: 28px;
+}
+
+.list {
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.list__row {
+  display: flex;
+  width: 80%;
+  justify-content: space-evenly;
+  padding-bottom: 64px;
+}
+.list__row .country {
+  background-color: white;
+  border-radius: 20px;
+  z-index: 1;
+}
+.list__row .country__flag {
+  width: 192px;
+}
+.list__row .country__information {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.list__row .country__information .population, .list__row .country__information .region, .list__row .country__information .capital {
+  font-weight: bolder;
+}
 
 /*# sourceMappingURL=index.css.map */
