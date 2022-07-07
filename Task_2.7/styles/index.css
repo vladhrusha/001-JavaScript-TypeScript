@@ -1,6 +1,7 @@
 body {
   margin: 0;
   background-color: lightgray;
+  color: black;
 }
 
 .darkMode__body {
@@ -9,7 +10,7 @@ body {
 }
 
 .darkMode__element {
-  background-color: #2c2c2c !important;
+  background-color: #2c2c2c;
   color: white;
 }
 

@@ -3,13 +3,14 @@ $darkMode-countryBackgroundColor: #2c2c2c;
 body {
     margin: 0;
     background-color: lightgray;
+    color: black;
 }
 .darkMode__body{
     background-color: $darkMode-bodyBackgroundColor;
     color: white;
 }
 .darkMode__element{
-    background-color: $darkMode-countryBackgroundColor !important;
+    background-color: $darkMode-countryBackgroundColor;
     color: white;
 }
 .darkMode__element::placeholder{
