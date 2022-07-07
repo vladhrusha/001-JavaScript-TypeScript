@@ -1,0 +1,74 @@
+body {
+  background-color: #F1F5F8;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo {
+  background-color: #FFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+}
+.todo .h1 {
+  margin-top: 50px;
+}
+.todo .clearButton {
+  background-color: inherit;
+  border: 0;
+  color: #E66E6D;
+  padding-bottom: 20px;
+}
+
+.todo__form {
+  margin-left: 20px;
+  margin-right: 20px;
+  position: relative;
+}
+.todo__form .input {
+  width: 300px;
+  height: 20px;
+  margin: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border: 0;
+  background-color: #F1F5F8;
+  position: relative;
+}
+.todo__form .input:focus {
+  outline: none;
+}
+.todo__form .button {
+  width: 50px;
+  height: 22px;
+  margin: 0;
+  background-color: #A5D5F8;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: 0;
+  position: relative;
+  right: 5px;
+}
+
+.table {
+  width: 100%;
+  padding-top: 25px;
+}
+.table .table__row {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 30px;
+  margin-right: 30px;
+  line-height: 30px;
+}
+.table .table__row .image {
+  width: 12px;
+}
+
+/*# sourceMappingURL=index.css.map */
