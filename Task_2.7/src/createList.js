@@ -1,5 +1,5 @@
 let row;
-import { countriesList, API_URL } from '../public/index.js';
+import { countriesList } from '../public/index.js';
 import { quickSort } from './sorting.js';
 
 async function displayList(queryValue) {
@@ -58,6 +58,8 @@ function composeCountryItem(country, darkMode) {
 }
 
 async function getCountries(queryValue) {
+  const API_URL = 'https://restcountries.com/v3.1/';
+
   try {
     console.log(`${API_URL}${queryValue}`);
     let response = await fetch(`${API_URL}${queryValue}`);

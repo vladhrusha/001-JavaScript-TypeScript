@@ -6,7 +6,6 @@ const displayMode = document.querySelector('.displayMode');
 const countriesList = document.querySelector('.list');
 const form = document.querySelector('.nav__form');
 const filterSelect = form.querySelector('.filterSelect');
-const API_URL = 'https://restcountries.com/v3.1/';
 
 displayMode
   .querySelector('.image')
@@ -18,4 +17,4 @@ filterSelect.addEventListener('change', onSelect);
 
 displayList('all');
 
-export { displayMode, countriesList, form, filterSelect, API_URL };
+export { displayMode, countriesList, form, filterSelect };
