@@ -1,7 +1,6 @@
 let row;
 import { countriesList, API_URL } from '../public/index.js';
 import { quickSort } from './sorting.js';
-import { onSearchTextInput } from './inputMethods.js';
 
 async function displayList(queryValue) {
   let darkModeEnabled = false;
@@ -79,4 +78,4 @@ async function getCountries(queryValue) {
   }
 }
 
-export { displayList, getCountries, onSearchTextInput };
+export { displayList, getCountries };

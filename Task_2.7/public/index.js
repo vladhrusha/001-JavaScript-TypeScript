@@ -1,6 +1,6 @@
-import { displayList, onSearchTextInput } from '../src/createList.js';
+import { displayList } from '../src/createList.js';
 import { onClickDisplayMode } from '../src/darkMode.js';
-import { onSelect } from '../src/inputMethods.js';
+import { onSelect, onSearchTextInput } from '../src/inputMethods.js';
 
 const displayMode = document.querySelector('.displayMode');
 const countriesList = document.querySelector('.list');
