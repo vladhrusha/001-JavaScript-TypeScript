@@ -4,6 +4,11 @@ import { selectionSort } from './sorting.js';
 import { onSearchTextInput } from './inputMethods.js';
 
 async function displayList(queryValue, frequentUpdate) {
+  let darkModeEnabled = false;
+
+  if (countriesList.querySelector('.darkMode__element')) {
+    darkModeEnabled = true;
+  }
   countriesList.innerHTML = '';
   const countries = await getCountries(queryValue, frequentUpdate);
   selectionSort(countries);
@@ -14,6 +19,7 @@ async function displayList(queryValue, frequentUpdate) {
       capital: country.capital,
       region: country.region,
       flag: country.flags.png,
+      darkMode: darkModeEnabled,
     };
     composeCountryRow(countryObject, index, 4);
   });
@@ -32,9 +38,12 @@ function composeCountryRow(country, index, columnNumber) {
 
 function composeCountryItem(country) {
   let item = '';
-
+  let darkModeClass = '';
+  if (country.darkMode) {
+    darkModeClass = 'darkMode__element';
+  }
   item += `
-    <article class="country">
+    <article class="country ${darkModeClass}">
 	<img class="country__flag" src="${country.flag}" />
 	<div class="country__information">
 	<h4 class="h4 name">${country.name}</h4>

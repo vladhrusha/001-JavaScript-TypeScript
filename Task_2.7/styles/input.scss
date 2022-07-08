@@ -10,7 +10,7 @@ body {
     color: white;
 }
 .darkMode__element{
-    background-color: $darkMode-countryBackgroundColor;
+    background-color: $darkMode-countryBackgroundColor !important;
     color: white;
 }
 .darkMode__element::placeholder{
@@ -32,9 +32,6 @@ body {
         padding-right: 50px;
         .image{
             width: 16px;
-        }
-        .span{
-
         }
     }
 }

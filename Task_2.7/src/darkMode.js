@@ -1,8 +1,7 @@
 import { displayMode, form } from '../public/index.js';
-
 function onClickDisplayMode() {
   const displayModeText = displayMode.querySelector('.span');
-  const countries = document.querySelectorAll('.country__information');
+  const countries = document.querySelectorAll('.country');
 
   if (displayModeText.innerHTML === 'Dark Mode') {
     displayModeText.innerHTML = 'Light Mode';
@@ -15,6 +14,7 @@ function onClickDisplayMode() {
   document.body.classList.toggle('darkMode__body');
   countries.forEach((country) => {
     country.classList.toggle('darkMode__element');
+    // console.log(country.classList[1]);
   });
   form.querySelector('.textInput').classList.toggle('darkMode__element');
   form.querySelector('.inputSelect').classList.toggle('darkMode__element');
@@ -23,5 +23,4 @@ function onClickDisplayMode() {
     .querySelector('.select')
     .classList.toggle('darkMode__element::placeholder');
 }
-
 export { onClickDisplayMode };
