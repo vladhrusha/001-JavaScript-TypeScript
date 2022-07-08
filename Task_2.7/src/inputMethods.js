@@ -2,14 +2,14 @@ import { form, select } from '../public/index.js';
 import { displayList } from '../src/createList.js';
 import { isEmptyOrWhitespaceOnly } from './utils.js';
 
-function onSearchTextInput(event) {
+function onSearchTextEnter(event) {
   if (event.keyCode === 13) {
     event.preventDefault();
-    const filterValue = form.querySelector('.textInput').value;
-    if (isEmptyOrWhitespaceOnly(filterValue)) {
+    const inputValue = form.querySelector('.textInput').value;
+    if (isEmptyOrWhitespaceOnly(inputValue)) {
       return;
     }
-    displayList('name/' + filterValue);
+    displayList('name/' + inputValue);
     form.querySelector('.textInput').value = '';
   }
 }
@@ -27,4 +27,4 @@ function onSelect() {
   }
   form.querySelector('.inputSelect').value = '';
 }
-export { onSearchTextInput, onSelect };
+export { onSearchTextEnter, onSelect };
