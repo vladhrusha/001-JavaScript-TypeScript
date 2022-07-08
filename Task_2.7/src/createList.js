@@ -3,14 +3,14 @@ import { countriesList, API_URL } from '../public/index.js';
 import { quickSort } from './sorting.js';
 import { onSearchTextInput } from './inputMethods.js';
 
-async function displayList(queryValue, frequentUpdate) {
+async function displayList(queryValue) {
   let darkModeEnabled = false;
 
   if (countriesList.querySelector('.darkMode__element')) {
     darkModeEnabled = true;
   }
   countriesList.innerHTML = '';
-  const countries = await getCountries(queryValue, frequentUpdate);
+  const countries = await getCountries(queryValue);
   quickSort(countries);
   countries.forEach((country, index) => {
     const countryObject = {
@@ -66,7 +66,7 @@ function composeCountryItem(country) {
   return item;
 }
 
-async function getCountries(queryValue, frequentUpdate) {
+async function getCountries(queryValue) {
   try {
     console.log(`${API_URL}${queryValue}`);
     let response = await fetch(`${API_URL}${queryValue}`);
@@ -75,9 +75,7 @@ async function getCountries(queryValue, frequentUpdate) {
     }
     return await response.json();
   } catch (err) {
-    if (!frequentUpdate) {
-      alert('invalid filter input');
-    }
+    alert('invalid filter input');
   }
 }
 
