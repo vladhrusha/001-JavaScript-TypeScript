@@ -10,9 +10,7 @@ const API_URL = 'https://restcountries.com/v3.1/';
 displayMode
   .querySelector('.image')
   .addEventListener('click', onClickDisplayMode);
-form
-  .querySelector('.textInput')
-  .addEventListener('keypress', onSearchTextInput);
+form.querySelector('.textInput').addEventListener('keyup', onSearchTextInput);
 select.addEventListener('change', onSelect);
 
 displayList('all', true);

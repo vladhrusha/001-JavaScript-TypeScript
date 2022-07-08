@@ -7,10 +7,7 @@ function onSearchTextInput(event) {
     return false;
   }
   const filterValue = form.querySelector('.textInput').value;
-  console.log(filterValue);
   displayList('name/' + filterValue, true);
-  console.log('key pressed');
-  console.log('name/' + filterValue);
 }
 function onSelect() {
   const filterValue = form.querySelector('.inputSelect').value;
