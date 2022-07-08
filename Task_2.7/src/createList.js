@@ -1,6 +1,6 @@
 let row;
 import { countriesList, API_URL } from '../public/index.js';
-import { selectionSort } from './sorting.js';
+import { quickSort } from './sorting.js';
 import { onSearchTextInput } from './inputMethods.js';
 
 async function displayList(queryValue, frequentUpdate) {
@@ -11,7 +11,7 @@ async function displayList(queryValue, frequentUpdate) {
   }
   countriesList.innerHTML = '';
   const countries = await getCountries(queryValue, frequentUpdate);
-  selectionSort(countries);
+  quickSort(countries);
   countries.forEach((country, index) => {
     const countryObject = {
       name: country.name.common,

@@ -1,20 +1,46 @@
-function selectionSort(countries) {
-  let min;
+function quickSort(array) {
+  executeQuickSort(array, 0, array.length - 1);
+}
 
-  for (let i = 0; i < countries.length; i++) {
-    min = i;
+function executeQuickSort(array, left, right) {
+  let index;
 
-    for (let j = i + 1; j < countries.length; j++) {
-      if (countries[j].name.common < countries[min].name.common) {
-        min = j;
-      }
+  if (array.length > 1) {
+    index = partition(array, left, right);
+
+    if (left < index - 1) {
+      executeQuickSort(array, left, index - 1);
     }
 
-    if (min !== i) {
-      [countries[i], countries[min]] = [countries[min], countries[i]];
+    if (index < right) {
+      executeQuickSort(array, index, right);
     }
   }
-
-  return countries;
+  return array;
 }
-export { selectionSort };
+
+function partition(array, left, right) {
+  let pivot = array[Math.floor((right + left) / 2)],
+    i = left,
+    j = right;
+
+  while (i <= j) {
+    while (array[i].name.common < pivot.name.common) {
+      i++;
+    }
+
+    while (array[j].name.common > pivot.name.common) {
+      j--;
+    }
+
+    if (i <= j) {
+      [array[i], array[j]] = [array[j], array[i]];
+
+      i++;
+      j--;
+    }
+  }
+  return i;
+}
+
+export { quickSort };
