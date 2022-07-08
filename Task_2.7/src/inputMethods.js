@@ -4,10 +4,10 @@ import { displayList } from '../src/createList.js';
 function onSearchTextInput(event) {
   if (event.keyCode === 13) {
     event.preventDefault();
-    return false;
+    const filterValue = form.querySelector('.textInput').value;
+    displayList('name/' + filterValue, true);
+    form.querySelector('.textInput').value = '';
   }
-  const filterValue = form.querySelector('.textInput').value;
-  displayList('name/' + filterValue, true);
 }
 function onSelect() {
   const filterValue = form.querySelector('.inputSelect').value;

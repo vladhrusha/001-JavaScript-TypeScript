@@ -68,6 +68,7 @@ function composeCountryItem(country) {
 
 async function getCountries(queryValue, frequentUpdate) {
   try {
+    console.log(`${API_URL}${queryValue}`);
     let response = await fetch(`${API_URL}${queryValue}`);
     if (!response.ok) {
       throw Error();
