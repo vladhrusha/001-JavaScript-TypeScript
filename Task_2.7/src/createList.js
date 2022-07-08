@@ -3,10 +3,10 @@ import { countriesList, API_URL } from '../public/index.js';
 import { quickSort } from './sorting.js';
 
 async function displayList(queryValue) {
-  let darkModeEnabled = false;
+  let darkMode = '';
 
   if (countriesList.querySelector('.darkMode__element')) {
-    darkModeEnabled = true;
+    darkMode = 'darkMode__element';
   }
   countriesList.innerHTML = '';
   const countries = await getCountries(queryValue);
@@ -18,31 +18,25 @@ async function displayList(queryValue) {
       capital: country.capital,
       region: country.region,
       flag: country.flags.png,
-      darkMode: darkModeEnabled,
     };
-    composeCountryRow(countryObject, index, 4);
+    composeCountryRow(countryObject, index, 4, darkMode);
   });
 }
 
-function composeCountryRow(country, index, columnNumber) {
+function composeCountryRow(country, index, columnNumber, darkMode) {
   if (index % columnNumber == 0) {
     row = '<section class="list__row">';
   }
-  row += composeCountryItem(country);
+  row += composeCountryItem(country, darkMode);
   if (index % columnNumber == columnNumber - 1) {
     row += `</section>`;
     countriesList.innerHTML += row;
   }
 }
 
-function composeCountryItem(country) {
-  let item = '';
-  let darkModeClass = '';
-  if (country.darkMode) {
-    darkModeClass = 'darkMode__element';
-  }
-  item += `
-    <article class="country ${darkModeClass}">
+function composeCountryItem(country, darkMode) {
+  return `
+    <article class="country ${darkMode}">
 	<img class="country__flag" src="${country.flag}" />
 	<div class="country__information">
 	<h4 class="h4 name">${country.name}</h4>
@@ -61,8 +55,6 @@ function composeCountryItem(country) {
 	</div>
 	</article>
     `;
-
-  return item;
 }
 
 async function getCountries(queryValue) {

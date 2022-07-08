@@ -1,7 +1,7 @@
-import { displayMode, form } from '../public/index.js';
+import { displayMode, form, countriesList } from '../public/index.js';
 function onClickDisplayMode() {
   const displayModeText = displayMode.querySelector('.span');
-  const countries = document.querySelectorAll('.country');
+  const countriesItems = countriesList.querySelectorAll('.country');
 
   if (displayModeText.innerHTML === 'Dark Mode') {
     displayModeText.innerHTML = 'Light Mode';
@@ -12,15 +12,14 @@ function onClickDisplayMode() {
   }
 
   document.body.classList.toggle('darkMode__body');
-  countries.forEach((country) => {
-    country.classList.toggle('darkMode__element');
-    // console.log(country.classList[1]);
+  countriesItems.forEach((countryItem) => {
+    countryItem.classList.toggle('darkMode__element');
   });
-  form.querySelector('.textInput').classList.toggle('darkMode__element');
-  form.querySelector('.inputSelect').classList.toggle('darkMode__element');
-  form.querySelector('.select').classList.toggle('darkMode__element');
+  form.querySelector('.countryInput').classList.toggle('darkMode__element');
+  form.querySelector('.filterInput').classList.toggle('darkMode__element');
+  form.querySelector('.filterSelect').classList.toggle('darkMode__element');
   form
-    .querySelector('.select')
+    .querySelector('.filterSelect')
     .classList.toggle('darkMode__element::placeholder');
 }
 export { onClickDisplayMode };

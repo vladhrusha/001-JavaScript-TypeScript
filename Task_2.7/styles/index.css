@@ -41,22 +41,22 @@ body {
   justify-content: space-around;
   padding-top: 20px;
 }
-.nav__form .textInput {
+.nav__form .countryInput {
   width: 60%;
   height: 25px;
   padding: 5px;
 }
-.nav__form .textInput:focus {
+.nav__form .countryInput:focus {
   outline: none;
 }
 .nav__form .divSelect {
   display: flex;
   height: 28px;
 }
-.nav__form .divSelect .inputSelect:focus {
+.nav__form .divSelect .filterInput:focus {
   outline: none;
 }
-.nav__form .divSelect .select {
+.nav__form .divSelect .filterSelect {
   height: 28px;
 }
 

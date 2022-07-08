@@ -40,21 +40,21 @@ body {
     width: 100%;
     justify-content: space-around;
     padding-top: 20px;
-    .textInput{
+    .countryInput{
         width: 60%;
         height: 25px;
         padding: 5px;
     }
-    .textInput:focus{
+    .countryInput:focus{
         outline: none;
     }
     .divSelect {
         display: flex;
         height: 28px;
-        .inputSelect:focus {
+        .filterInput:focus {
             outline: none;
         }
-        .select {
+        .filterSelect {
             height: 28px;
         }
     }
