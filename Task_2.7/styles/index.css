@@ -54,7 +54,7 @@ body {
   padding: 5px;
 }
 .nav__form .divSearch .loader {
-  border: 8px solid #f3f3f3;
+  border: 8px solid var(--accent);
   border-top: 8px solid #3498db !important;
   border-radius: 50%;
   width: 5px;
