@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../styles/index.css" />
   </head>
 
-  <body>
+  <body class="dark-theme || light-theme">
     <nav class="nav">
       <header class="nav__header">
         <h1 class="h1">Where in the world?</h1>
@@ -17,14 +17,17 @@
       </header>
 
       <form class="nav__form">
-        <input
-          class="countryInput"
-          type="search"
-          placeholder="Search for a country"
-        />
+        <div class="divSearch">
+          <input
+            class="countryInput input"
+            type="search"
+            placeholder="Search for a country"
+          />
+          <div class="loader"></div>
+        </div>
         <div class="divSelect">
-          <input class="filterInput" type="search" placeholder="filter" />
-          <select class="filterSelect">
+          <input class="filterInput input" type="search" placeholder="filter" />
+          <select class="filterSelect select">
             <option>Filter by none</option>
             <option>Filter by Region</option>
           </select>

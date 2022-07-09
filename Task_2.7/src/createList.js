@@ -1,16 +1,14 @@
 let row;
-import { countriesList } from '../public/index.js';
+import { countriesList, form } from '../public/index.js';
 import { quickSort } from './sorting.js';
+import { compareName } from './utils.js';
 
 async function displayList(queryValue) {
-  let darkMode = '';
-
-  if (countriesList.querySelector('.darkMode__element')) {
-    darkMode = 'darkMode__element';
-  }
+  const loader = form.querySelector('.loader');
+  loader.style.display = 'block';
   countriesList.innerHTML = '';
   const countries = await getCountries(queryValue);
-  quickSort(countries);
+  countries.sort(compareName);
   countries.forEach((country, index) => {
     const countryObject = {
       name: country.name.common,
@@ -19,24 +17,33 @@ async function displayList(queryValue) {
       region: country.region,
       flag: country.flags.png,
     };
-    composeCountryRow(countryObject, index, 4, darkMode);
+    composeCountryRow(countryObject, index, 4, countries.length);
   });
+  loader.style.display = 'none';
+
+  if (countriesList.innerHTML === '') {
+    countriesList.innerHTML =
+      'The server has not found anything matching your request';
+  }
 }
 
-function composeCountryRow(country, index, columnNumber, darkMode) {
+function composeCountryRow(country, index, columnNumber, length) {
   if (index % columnNumber == 0) {
     row = '<section class="list__row">';
   }
-  row += composeCountryItem(country, darkMode);
-  if (index % columnNumber == columnNumber - 1) {
+  row += composeCountryItem(country);
+  if (
+    index % columnNumber == columnNumber - 1 ||
+    (index == length - 1 && index % columnNumber != columnNumber - 1)
+  ) {
     row += `</section>`;
     countriesList.innerHTML += row;
   }
 }
 
-function composeCountryItem(country, darkMode) {
+function composeCountryItem(country) {
   return `
-    <article class="country ${darkMode}">
+    <article class="country ">
 	<img class="country__flag" src="${country.flag}" />
 	<div class="country__information">
 	<h4 class="h4 name">${country.name}</h4>
@@ -61,7 +68,6 @@ async function getCountries(queryValue) {
   const API_URL = 'https://restcountries.com/v3.1/';
 
   try {
-    console.log(`${API_URL}${queryValue}`);
     let response = await fetch(`${API_URL}${queryValue}`);
     if (!response.ok) {
       throw Error();

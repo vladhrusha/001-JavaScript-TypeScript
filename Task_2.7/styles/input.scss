@@ -1,24 +1,15 @@
-$darkMode-bodyBackgroundColor: #4c4c4c;
-$darkMode-countryBackgroundColor: #2c2c2c;
+@use 'darkMode';
 body {
     margin: 0;
-    background-color: lightgray;
-    color: black;
-}
-.darkMode__body{
-    background-color: $darkMode-bodyBackgroundColor;
-    color: white;
-}
-.darkMode__element{
-    background-color: $darkMode-countryBackgroundColor !important;
-    color: white;
-}
-.darkMode__element::placeholder{
-    color: white;
 }
 
-.nav {
+.light-theme {
+    background-color: lightgray;
 }
+.light-theme .country {
+    background-color: white;
+}
+
 .nav__header{
     display: flex;
     justify-content: space-between;
@@ -40,11 +31,35 @@ body {
     width: 100%;
     justify-content: space-around;
     padding-top: 20px;
-    .countryInput{
+    .divSearch {
         width: 60%;
-        height: 25px;
-        padding: 5px;
+        display: flex;
+        justify-content: space-evenly;
+        .countryInput {
+            width: 80%;
+            height: 25px;
+            padding: 5px;
+        }
+                .loader {
+                    border: 8px solid #f3f3f3;
+                    border-top: 8px solid #3498db !important;
+                    border-radius: 50%;
+                    width: 5px;
+                    height: 5px;
+                    animation: spin 2s linear infinite;
+                }
+        
+                @keyframes spin {
+                    0% {
+                        transform: rotate(0deg);
+                    }
+        
+                    100% {
+                        transform: rotate(360deg);
+                    }
+                }
     }
+
     .countryInput:focus{
         outline: none;
     }
@@ -75,7 +90,6 @@ body {
     justify-content: space-evenly;
     padding-bottom: 64px;
     .country{
-        background-color: white;
         border-radius: 50px;
         width: 192px;
     }

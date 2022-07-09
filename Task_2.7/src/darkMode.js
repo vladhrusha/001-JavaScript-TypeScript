@@ -10,16 +10,6 @@ function onClickDisplayMode() {
     displayModeText.innerHTML = 'Dark Mode';
     displayMode.querySelector('.image').src = '../images/dark.png';
   }
-
-  document.body.classList.toggle('darkMode__body');
-  countriesItems.forEach((countryItem) => {
-    countryItem.classList.toggle('darkMode__element');
-  });
-  form.querySelector('.countryInput').classList.toggle('darkMode__element');
-  form.querySelector('.filterInput').classList.toggle('darkMode__element');
-  form.querySelector('.filterSelect').classList.toggle('darkMode__element');
-  form
-    .querySelector('.filterSelect')
-    .classList.toggle('darkMode__element::placeholder');
+  document.body.classList.toggle('dark-theme');
 }
 export { onClickDisplayMode };
