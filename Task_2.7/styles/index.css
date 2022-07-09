@@ -81,8 +81,8 @@ body {
 }
 .nav__form .divSelect .filterSelect {
   height: 28px;
-  background-color: var(--accent);
   color: var(--font);
+  background-color: var(--accent);
 }
 
 .list {
@@ -101,6 +101,7 @@ body {
 .list__row .country {
   border-radius: 50px;
   width: 192px;
+  color: var(--font);
   background-color: var(--accent);
 }
 .list__row .country__flag {

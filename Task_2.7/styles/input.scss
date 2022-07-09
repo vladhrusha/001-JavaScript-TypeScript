@@ -5,11 +5,19 @@
 
 }
 
+@mixin themePrimary() {
+    color: var(--font);
+    background-color: var(--primary);
+}
+@mixin themeAccent() {
+    color: var(--font);
+    background-color: var(--accent);
+}
+
 
 body {
     margin: 0;
-    color: var(--font);
-    background-color: var(--primary);
+    @include themePrimary();
 }
 
 .dark {
@@ -40,8 +48,7 @@ body {
     justify-content: space-around;
     padding-top: 20px;
     .input {
-        color: var(--font);
-        background-color: var(--accent);
+    @include themeAccent();
     }
     .divSearch {
         width: 60%;
@@ -84,8 +91,7 @@ body {
         }
         .filterSelect {
             height: 28px;
-            background-color: var(--accent);
-            color: var(--font);
+            @include themeAccent();
         }
     }
 
@@ -107,7 +113,7 @@ body {
     .country{
         border-radius: 50px;
         width: 192px;
-        background-color: var(--accent);
+        @include themeAccent();
     }
     .country__flag{
         width: 192px;
