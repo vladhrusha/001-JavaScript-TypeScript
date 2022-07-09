@@ -9,6 +9,18 @@ body {
   color: var(--font);
   background-color: var(--primary);
 }
+body .input {
+  color: var(--font);
+  background-color: var(--accent);
+}
+body .select {
+  color: var(--font);
+  background-color: var(--accent);
+}
+body .country {
+  color: var(--font);
+  background-color: var(--accent);
+}
 
 .dark {
   --primary: #4c4c4c;
@@ -38,10 +50,6 @@ body {
   width: 100%;
   justify-content: space-around;
   padding-top: 20px;
-}
-.nav__form .input {
-  color: var(--font);
-  background-color: var(--accent);
 }
 .nav__form .divSearch {
   width: 60%;
@@ -81,8 +89,6 @@ body {
 }
 .nav__form .divSelect .filterSelect {
   height: 28px;
-  color: var(--font);
-  background-color: var(--accent);
 }
 
 .list {
@@ -101,8 +107,6 @@ body {
 .list__row .country {
   border-radius: 50px;
   width: 192px;
-  color: var(--font);
-  background-color: var(--accent);
 }
 .list__row .country__flag {
   width: 192px;

@@ -18,6 +18,15 @@
 body {
     margin: 0;
     @include themePrimary();
+    .input {
+        @include themeAccent();
+    }
+    .select {
+        @include themeAccent();
+    }
+    .country {
+        @include themeAccent();
+    }
 }
 
 .dark {
@@ -47,9 +56,7 @@ body {
     width: 100%;
     justify-content: space-around;
     padding-top: 20px;
-    .input {
-    @include themeAccent();
-    }
+
     .divSearch {
         width: 60%;
         display: flex;
@@ -60,24 +67,22 @@ body {
             padding: 5px;
 
         }
-                .loader {
-                    border: 8px solid var(--accent);
-                    border-top: 8px solid #3498db !important;
-                    border-radius: 50%;
-                    width: 5px;
-                    height: 5px;
-                    animation: spin 2s linear infinite;
-                  }
-        
-                @keyframes spin {
-                    0% {
-                        transform: rotate(0deg);
-                    }
-        
-                    100% {
-                        transform: rotate(360deg);
-                    }
-                }
+        .loader {
+            border: 8px solid var(--accent);
+            border-top: 8px solid #3498db !important;
+            border-radius: 50%;
+            width: 5px;
+            height: 5px;
+            animation: spin 2s linear infinite;
+        }
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
     }
 
     .countryInput:focus{
@@ -91,7 +96,6 @@ body {
         }
         .filterSelect {
             height: 28px;
-            @include themeAccent();
         }
     }
 
@@ -113,7 +117,6 @@ body {
     .country{
         border-radius: 50px;
         width: 192px;
-        @include themeAccent();
     }
     .country__flag{
         width: 192px;
