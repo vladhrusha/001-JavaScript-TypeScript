@@ -1,6 +1,5 @@
 let row;
 import { countriesList, form } from '../public/index.js';
-import { quickSort } from './sorting.js';
 import { compareName } from './utils.js';
 
 async function displayList(queryValue) {

@@ -1,40 +1,19 @@
-.dark-theme {
-  background-color: #4c4c4c !important;
-  color: white;
-}
-
-.dark-theme .country {
-  background-color: #2c2c2c !important;
-}
-
-.dark-theme .loader {
-  border: 8px solid darkgrey !important;
-}
-
-.dark-theme .input {
-  background-color: #2c2c2c;
-  color: white;
-}
-
-.dark-theme .input::placeholder {
-  color: white;
-}
-
-.dark-theme .select {
-  background-color: #2c2c2c;
-  color: white;
+:root {
+  --primary: white;
+  --font: black;
+  --accent: lightgray;
 }
 
 body {
   margin: 0;
+  color: var(--font);
+  background-color: var(--primary);
 }
 
-.light-theme {
-  background-color: lightgray;
-}
-
-.light-theme .country {
-  background-color: white;
+.dark {
+  --primary: #4c4c4c;
+  --font: white;
+  --accent: black;
 }
 
 .nav__header {
@@ -59,6 +38,10 @@ body {
   width: 100%;
   justify-content: space-around;
   padding-top: 20px;
+}
+.nav__form .input {
+  color: var(--font);
+  background-color: var(--accent);
 }
 .nav__form .divSearch {
   width: 60%;
@@ -98,6 +81,8 @@ body {
 }
 .nav__form .divSelect .filterSelect {
   height: 28px;
+  background-color: var(--accent);
+  color: var(--font);
 }
 
 .list {
@@ -116,6 +101,7 @@ body {
 .list__row .country {
   border-radius: 50px;
   width: 192px;
+  background-color: var(--accent);
 }
 .list__row .country__flag {
   width: 192px;
