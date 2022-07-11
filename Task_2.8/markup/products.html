@@ -1,0 +1,25 @@
+<div class="products">
+  <aside>
+    <form class="form">
+      <input type="search" class="search" placeholder="Search..." />
+      <h5 class="h5">Company</h5>
+      <button class="category">All</button>
+      <button class="category">Ikea</button>
+      <button class="category">Marcos</button>
+      <button class="category">Caressa</button>
+      <button class="category">Liddy</button>
+      <h5 class="h5">Price</h5>
+      <input
+        type="range"
+        id="a"
+        name="a"
+        value="50"
+        oninput="result.value=parseInt(a.value)"
+      />
+      <div>
+        <span>Value: $</span><output id="rangeResult" name="result"></output>
+      </div>
+    </form>
+  </aside>
+  <div class="catalog"></div>
+</div>

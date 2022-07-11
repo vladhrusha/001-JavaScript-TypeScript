@@ -1,0 +1,190 @@
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.section {
+  width: 100%;
+}
+
+.nav {
+  padding-left: 100px;
+}
+.nav .nav__header {
+  display: flex;
+  justify-content: space-between;
+}
+.nav .nav__header .button {
+  background-color: transparent;
+  border: 0 solid black;
+  margin-top: 10px;
+  font-size: 18px;
+}
+.nav .nav__header .shopName {
+  font-family: "Caveat", cursive;
+  font-size: 30px;
+  line-height: 15px;
+  margin: 10px 0px;
+}
+.nav .nav__header .cart {
+  background-color: transparent;
+  border: 0 solid black;
+  margin-top: 10px;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.featured {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80vw;
+}
+.featured .row {
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+}
+.featured .row .item__image {
+  width: 180px;
+  height: 120px;
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
+.products {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 120px;
+  margin-right: 30px;
+}
+.form .search {
+  background-color: lightgray;
+  border: 0;
+  width: 120px;
+  height: 25px;
+  border-radius: 5px;
+}
+.form .category {
+  background-color: white;
+  border: 0;
+  margin-bottom: 10px;
+}
+.form .h5 {
+  margin: 15px 0px;
+}
+
+.catalog {
+  width: 50vw;
+  display: flex;
+  justify-content: space-evenly;
+}
+.catalog .catalog__column {
+  display: flex;
+  flex-direction: column;
+  width: 180px;
+}
+.row {
+  display: flex;
+  width: 75vw;
+  justify-content: space-around;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+}
+
+.cartDiv {
+  background-color: lightgray;
+  width: 300px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.cartDiv .cart__exit {
+  position: relative;
+  font-size: 30px;
+  font-weight: 900;
+  right: 120px;
+  color: #7C95AB;
+}
+.cartDiv .cart__title {
+  font-family: "Caveat", cursive;
+}
+.cartDiv .cart__itemList {
+  width: 300px;
+}
+.cartDiv .cart__item {
+  width: 300px;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+}
+.cartDiv .cart__image {
+  width: 60px;
+  height: 45px;
+  border-radius: 5px;
+}
+.cartDiv .item__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.cartDiv .item__info h4 {
+  margin: 0 0;
+}
+.cartDiv .item__info .item__button {
+  color: #7C95AB;
+  background-color: lightgray;
+  border: 0 solid black;
+  margin-top: 5px;
+  padding: 0;
+}
+.cartDiv .item__counter {
+  display: flex;
+  flex-direction: column;
+}
+.cartDiv .item__counter .alter {
+  color: #BA5D2D;
+}
+.cartDiv .item__counter .down {
+  transform: rotate(180deg);
+}
+.cartDiv .totalPrice {
+  font-family: "Caveat", cursive;
+}
+.cartDiv .checkoutButton {
+  background-color: #BA5D2D;
+  border: 0 solid black;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
+  width: 75%;
+  height: 25px;
+  margin-bottom: 20px;
+}
+
+/*# sourceMappingURL=index.css.map */
