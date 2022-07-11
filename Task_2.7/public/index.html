@@ -1,0 +1,42 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Countries Page List</title>
+    <link rel="stylesheet" href="../styles/index.css" />
+  </head>
+
+  <body>
+    <nav class="nav">
+      <header class="nav__header">
+        <h1 class="h1">Where in the world?</h1>
+        <div class="displayMode">
+          <img class="image" alt="night" src="../images/dark.png" />
+          <span class="span">Dark Mode</span>
+        </div>
+      </header>
+
+      <form class="nav__form">
+        <div class="divSearch">
+          <input
+            class="countryInput input"
+            type="search"
+            placeholder="Search for a country"
+          />
+          <div class="loader"></div>
+        </div>
+        <div class="divSelect">
+          <input class="filterInput input" type="search" placeholder="filter" />
+          <select class="filterSelect select">
+            <option>Filter by none</option>
+            <option>Filter by Region</option>
+          </select>
+        </div>
+      </form>
+    </nav>
+
+    <section class="list"></section>
+
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>

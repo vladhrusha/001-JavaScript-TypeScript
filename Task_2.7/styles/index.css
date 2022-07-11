@@ -1,0 +1,129 @@
+:root {
+  --primary: white;
+  --font: black;
+  --accent: lightgray;
+}
+
+body {
+  margin: 0;
+  color: var(--font);
+  background-color: var(--primary);
+}
+body .input {
+  color: var(--font);
+  background-color: var(--accent);
+}
+body .select {
+  color: var(--font);
+  background-color: var(--accent);
+}
+body .country {
+  color: var(--font);
+  background-color: var(--accent);
+}
+
+.dark {
+  --primary: #4c4c4c;
+  --font: white;
+  --accent: black;
+}
+
+.nav__header {
+  display: flex;
+  justify-content: space-between;
+}
+.nav__header .h1 {
+  margin: 0;
+  padding-top: 10px;
+  padding-left: 50px;
+}
+.nav__header .displayMode {
+  padding-top: 10px;
+  padding-right: 50px;
+}
+.nav__header .displayMode .image {
+  width: 16px;
+}
+
+.nav__form {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  padding-top: 20px;
+}
+.nav__form .divSearch {
+  width: 60%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.nav__form .divSearch .countryInput {
+  width: 80%;
+  height: 25px;
+  padding: 5px;
+}
+.nav__form .divSearch .loader {
+  border: 8px solid var(--accent);
+  border-top: 8px solid #3498db !important;
+  border-radius: 50%;
+  width: 5px;
+  height: 5px;
+  animation: spin 2s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.nav__form .countryInput:focus {
+  outline: none;
+}
+.nav__form .divSelect {
+  display: flex;
+  height: 28px;
+}
+.nav__form .divSelect .filterInput:focus {
+  outline: none;
+}
+.nav__form .divSelect .filterSelect {
+  height: 28px;
+}
+
+.list {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.list__row {
+  display: flex;
+  width: 80%;
+  justify-content: space-evenly;
+  padding-bottom: 64px;
+}
+.list__row .country {
+  border-radius: 50px;
+  width: 192px;
+}
+.list__row .country__flag {
+  width: 192px;
+  height: 128px;
+  overflow: hidden;
+}
+.list__row .country__information {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  font-weight: bold;
+}
+.list__row .country__information .name {
+  margin-top: 0;
+}
+.list__row .country__information .population, .list__row .country__information .region, .list__row .country__information .capital {
+  font-weight: normal;
+}
+
+/*# sourceMappingURL=index.css.map */
