@@ -4,6 +4,11 @@ import {
   createFeatured,
 } from '../scripts/specificCatalogCreation.js';
 
+import { getCart } from '../scripts/createCart.js';
+
+const array = [];
+localStorage['cartItems'] = JSON.stringify(array);
+localStorage['counter'] = 0;
 loadNavigation();
 // loadHome();
 
@@ -16,7 +21,6 @@ function loadNavigation() {
     });
 
     const cart = document.querySelector('.cart');
-    console.log(cart);
     cart.addEventListener('click', onClickCart);
   });
 }
@@ -77,5 +81,6 @@ function onClickCart(e) {
     exitButton.addEventListener('click', () => {
       $('.asideCart').empty();
     });
+    getCart();
   });
 }

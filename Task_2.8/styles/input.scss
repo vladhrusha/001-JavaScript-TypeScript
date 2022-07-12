@@ -109,7 +109,7 @@ body {
     .catalog__column {
         display: flex;
         flex-direction: column;
-        width: 180px;
+        width: 120px;
 
         .item__image {
             // width: 180px;
@@ -124,6 +124,10 @@ body {
 .item {
     display: flex;
     flex-direction: column;
+    .priceAndCart{
+        display: flex;
+        justify-content: space-between;
+    }
 }
 .cartDiv {
     background-color: lightgray;
@@ -166,7 +170,7 @@ body {
         h4 {
             margin: 0 0;
         }
-        .item__button {
+        .item__remove {
             color: $remove;
             background-color: lightgray;
             border: 0 solid black;

@@ -112,7 +112,7 @@ body {
 .catalog .catalog__column {
   display: flex;
   flex-direction: column;
-  width: 180px;
+  width: 120px;
 }
 .row {
   display: flex;
@@ -123,6 +123,10 @@ body {
 .item {
   display: flex;
   flex-direction: column;
+}
+.item .priceAndCart {
+  display: flex;
+  justify-content: space-between;
 }
 
 .cartDiv {
@@ -168,7 +172,7 @@ body {
 .cartDiv .item__info h4 {
   margin: 0 0;
 }
-.cartDiv .item__info .item__button {
+.cartDiv .item__info .item__remove {
   color: #7C95AB;
   background-color: lightgray;
   border: 0 solid black;
