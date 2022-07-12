@@ -1,9 +1,18 @@
+:root {
+  --font: black;
+}
+
+.navHome {
+  --font: red;
+}
+
 body {
   margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
+  color: var(--font);
 }
 
 .section {
@@ -22,17 +31,20 @@ body {
   border: 0 solid black;
   margin-top: 10px;
   font-size: 18px;
+  color: var(--font);
 }
-.nav .nav__header .shopName {
+.nav .nav__header .logo {
   font-family: "Caveat", cursive;
   font-size: 30px;
   line-height: 15px;
   margin: 10px 0px;
+  color: var(--font);
 }
 .nav .nav__header .cart {
   background-color: transparent;
   border: 0 solid black;
   margin-top: 10px;
+  color: var(--font);
 }
 
 .main {

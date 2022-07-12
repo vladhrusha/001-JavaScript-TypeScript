@@ -1,11 +1,22 @@
 $secondary : #BA5D2D;
 $remove : #7C95AB;
+
+:root {
+    --font: black;
+}
+
+.navHome {
+    --font: red;
+}
+
+
 body {
     margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
+    color: var(--font);
 }
 .section {
     width: 100%;
@@ -20,17 +31,20 @@ body {
             border: 0 solid black;
             margin-top: 10px;
             font-size: 18px;
+            color: var(--font);
         }
-        .shopName {
+        .logo {
             font-family: 'Caveat', cursive;
             font-size: 30px;
             line-height: 15px;
             margin: 10px 0px;
+            color: var(--font);
         }
         .cart {
             background-color: transparent;
             border: 0 solid black;
             margin-top: 10px;
+            color: var(--font);
         }
     }
 
