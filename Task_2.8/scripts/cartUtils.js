@@ -15,6 +15,8 @@ function addCartItemsEventListeners(cart) {
 }
 
 function increaseCartItemAmount(e) {
+  let cart = document.querySelector('.cartDiv');
+
   let itemsAmountArray = JSON.parse(localStorage['itemsAmountArray']);
   let cartTotalAmount = parseInt(localStorage['cartTotalAmount']);
 
@@ -33,9 +35,13 @@ function increaseCartItemAmount(e) {
   cartTotalAmount++;
   localStorage['cartTotalAmount'] = cartTotalAmount;
   document.querySelector('.cart').innerHTML = cartTotalAmount;
+  cart.querySelector('.totalPrice').innerHTML =
+    'Total: $' + getCartTotalPrice();
 }
 
 function decreaseCartItemAmount(e) {
+  let cart = document.querySelector('.cartDiv');
+
   let cartTotalAmount = parseInt(localStorage['cartTotalAmount']);
 
   let itemsAmountArray = JSON.parse(localStorage['itemsAmountArray']);
@@ -68,9 +74,13 @@ function decreaseCartItemAmount(e) {
   localStorage['itemsAmountArray'] = JSON.stringify(itemsAmountArray);
 
   amount.innerHTML = amount.innerHTML - 1;
+  cart.querySelector('.totalPrice').innerHTML =
+    'Total: $' + getCartTotalPrice();
 }
 
 function removeCartItem(e) {
+  let cart = document.querySelector('.cartDiv');
+
   let itemsAmountArray = JSON.parse(localStorage['itemsAmountArray']);
   let cartTotalAmount = parseInt(localStorage['cartTotalAmount']);
 
@@ -95,6 +105,8 @@ function removeCartItem(e) {
 
   localStorage['cartTotalAmount'] = cartTotalAmount;
   document.querySelector('.cart').innerHTML = cartTotalAmount;
+  cart.querySelector('.totalPrice').innerHTML =
+    'Total: $' + getCartTotalPrice();
 }
 
 function getCartTotalPrice() {
