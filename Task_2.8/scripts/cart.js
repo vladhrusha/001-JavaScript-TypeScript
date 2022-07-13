@@ -61,6 +61,7 @@ function getAddedItem(e) {
   cartTotalAmount++;
   localStorage.setItem('cartTotalAmount', cartTotalAmount);
   document.querySelector('.cart').innerHTML = cartTotalAmount;
+  getCart();
 }
 
 function getCart() {
