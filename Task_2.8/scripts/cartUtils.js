@@ -1,5 +1,3 @@
-let cart = document.querySelector('.cartDiv');
-
 function addCartItemsEventListeners(cart) {
   let items = cart.querySelectorAll('.cart__item');
 
@@ -18,15 +16,17 @@ function addCartItemsEventListeners(cart) {
 
 function writeToLocalStorage(
   cartTotalAmount,
-  cartUniqueItems,
+  cartNumberOfUniqueItems,
   itemsAmountArray
 ) {
   localStorage['cartTotalAmount'] = cartTotalAmount;
-  localStorage['cartUniqueItems'] = cartUniqueItems;
+  localStorage['cartNumberOfUniqueItems'] = cartNumberOfUniqueItems;
   localStorage['itemsAmountArray'] = JSON.stringify(itemsAmountArray);
 }
 
 function increaseCartItemAmount(e) {
+  let cart = document.querySelector('.cartDiv');
+
   let itemsAmountArray = JSON.parse(localStorage['itemsAmountArray']);
   let cartTotalAmount = parseInt(localStorage['cartTotalAmount']);
 
@@ -34,14 +34,20 @@ function increaseCartItemAmount(e) {
   let parent = item.parentElement;
   let index = Array.prototype.indexOf.call(parent.children, item);
   let amount = item.querySelector('.item__amount');
-  let cartUniqueItems = parseInt(localStorage['cartUniqueItems']);
+  let cartNumberOfUniqueItems = parseInt(
+    localStorage['cartNumberOfUniqueItems']
+  );
 
   amount.innerHTML = parseInt(amount.innerHTML) + 1;
-  cartUniqueItems += 1;
-  itemsAmountArray[index] += 1;
+  cartNumberOfUniqueItems++;
+  itemsAmountArray[index]++;
   cartTotalAmount++;
 
-  writeToLocalStorage(cartTotalAmount, cartUniqueItems, itemsAmountArray);
+  writeToLocalStorage(
+    cartTotalAmount,
+    cartNumberOfUniqueItems,
+    itemsAmountArray
+  );
 
   document.querySelector('.cart').innerHTML = cartTotalAmount;
   cart.querySelector('.totalPrice').innerHTML =
@@ -49,6 +55,8 @@ function increaseCartItemAmount(e) {
 }
 
 function decreaseCartItemAmount(e) {
+  let cart = document.querySelector('.cartDiv');
+
   let cartTotalAmount = parseInt(localStorage['cartTotalAmount']);
 
   let itemsAmountArray = JSON.parse(localStorage['itemsAmountArray']);
@@ -56,15 +64,17 @@ function decreaseCartItemAmount(e) {
   let item = e.currentTarget.parentElement.parentElement;
   let parent = item.parentElement;
   let index = Array.prototype.indexOf.call(parent.children, item);
-  itemsAmountArray[index] -= 1;
+  itemsAmountArray[index]--;
   if (itemsAmountArray[index] < 1) {
     itemsAmountArray.splice(index, 1);
   }
 
   let amount = item.querySelector('.item__amount');
   let cartItemsNames = JSON.parse(localStorage['cartItemsNames']);
-  let cartUniqueItems = parseInt(localStorage['cartUniqueItems']);
-  cartUniqueItems = cartUniqueItems - 1;
+  let cartNumberOfUniqueItems = parseInt(
+    localStorage['cartNumberOfUniqueItems']
+  );
+  cartNumberOfUniqueItems = cartNumberOfUniqueItems - 1;
   if (amount.innerHTML - 1 < 1) {
     for (let i = 0; i < cartItemsNames.length; i++) {
       if (item.querySelector('.item__name').innerHTML == cartItemsNames[i]) {
@@ -75,7 +85,11 @@ function decreaseCartItemAmount(e) {
     item.remove();
   }
   cartTotalAmount--;
-  writeToLocalStorage(cartTotalAmount, cartUniqueItems, itemsAmountArray);
+  writeToLocalStorage(
+    cartTotalAmount,
+    cartNumberOfUniqueItems,
+    itemsAmountArray
+  );
   document.querySelector('.cart').innerHTML = cartTotalAmount;
 
   amount.innerHTML = amount.innerHTML - 1;
@@ -84,10 +98,14 @@ function decreaseCartItemAmount(e) {
 }
 
 function removeCartItem(e) {
+  let cart = document.querySelector('.cartDiv');
+
   let itemsAmountArray = JSON.parse(localStorage['itemsAmountArray']);
   let cartTotalAmount = parseInt(localStorage['cartTotalAmount']);
 
-  let cartUniqueItems = parseInt(localStorage['cartUniqueItems']);
+  let cartNumberOfUniqueItems = parseInt(
+    localStorage['cartNumberOfUniqueItems']
+  );
   let item = e.currentTarget.parentElement.parentElement;
   let cartItemsNames = JSON.parse(localStorage['cartItemsNames']);
 
@@ -99,9 +117,15 @@ function removeCartItem(e) {
       localStorage['cartItemsNames'] = JSON.stringify(cartItemsNames);
     }
   }
-  cartUniqueItems -= item.querySelector('.item__amount').innerHTML;
+  console.log(cartNumberOfUniqueItems);
+  cartNumberOfUniqueItems -= item.querySelector('.item__amount').innerHTML;
+  console.log(cartNumberOfUniqueItems);
 
-  writeToLocalStorage(cartTotalAmount, cartUniqueItems, itemsAmountArray);
+  writeToLocalStorage(
+    cartTotalAmount,
+    cartNumberOfUniqueItems,
+    itemsAmountArray
+  );
 
   e.currentTarget.parentElement.parentElement.remove();
   document.querySelector('.cart').innerHTML = cartTotalAmount;

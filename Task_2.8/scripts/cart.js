@@ -20,7 +20,9 @@ function getAddedItem(e) {
   let item = e.currentTarget.parentElement.parentElement;
   let itemName = item.querySelector('.item__name').innerHTML;
 
-  let cartUniqueItems = parseInt(localStorage['cartUniqueItems']);
+  let cartNumberOfUniqueItems = parseInt(
+    localStorage['cartNumberOfUniqueItems']
+  );
   let cartTotalAmount = parseInt(localStorage['cartTotalAmount']);
 
   let cartItemsNames = JSON.parse(localStorage['cartItemsNames']);
@@ -46,9 +48,9 @@ function getAddedItem(e) {
     if (cartItemsNames.length != 0) {
       itemsAmountArray.push(1);
     }
-    cartItemsNames[cartUniqueItems] =
+    cartItemsNames[cartNumberOfUniqueItems] =
       item.querySelector('.item__name').innerHTML;
-    localStorage['cartUniqueItems'] = cartUniqueItems + 1;
+    localStorage['cartNumberOfUniqueItems'] = cartNumberOfUniqueItems + 1;
   }
 
   localStorage['cartItemsNames'] = JSON.stringify(cartItemsNames);
@@ -85,7 +87,7 @@ function getCart() {
 
 function initializeClearCart() {
   let array = [];
-  localStorage['cartUniqueItems'] = 0;
+  localStorage['cartNumberOfUniqueItems'] = 0;
   localStorage['itemsAmountArray'] = JSON.stringify(array);
   localStorage['cartItemsNames'] = JSON.stringify(array);
   localStorage['cartTotalAmount'] = 0;
