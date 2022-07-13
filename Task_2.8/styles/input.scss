@@ -11,8 +11,18 @@ $remove : #7C95AB;
     background-image: url("../images/background.jpg");
     background-size: cover;
     height: 60vh;
-}
+    .divNavHome{
+        display: block !important;
+    }
 
+    .title {
+        display: none !important;
+    }
+
+}
+.divNavHome {
+    display: none;
+}
 
 
 body {
@@ -52,6 +62,23 @@ body {
             font-size: 20px;
             color: var(--font);
         }
+    }
+    .title {
+        height: 10vh;
+        font-size: 40px;
+        display: flex;
+        align-items: center;
+    }
+    .showNow {
+        background-color: transparent;
+        color: white;
+        border: 2px solid white;
+        padding: 10px;
+        border-radius: 3px;
+    }
+    .slogan {
+        font-family: 'Caveat', cursive;
+        font-size: 50px;
     }
 
 }

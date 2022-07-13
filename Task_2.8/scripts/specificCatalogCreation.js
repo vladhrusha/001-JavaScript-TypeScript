@@ -57,11 +57,22 @@ function createCategory(e) {
 
 function createFeatured(e) {
   const featured = document.querySelector('.featured');
-  const row = featured.querySelector('.row');
+  const row = document.querySelector('.row');
   row.innerHTML = '';
   row.innerHTML += createCatalogItem(furniture['Ikea'][0]);
   row.innerHTML += createCatalogItem(furniture['Liddy'][2]);
   row.innerHTML += createCatalogItem(furniture['Marcos'][1]);
+
+  // let cartButtons = document.querySelectorAll('.item__image');
+  // console.log(cartButtons);
+  // cartButtons.forEach((button) => {
+  //   console.log(button);
+  //   button.addEventListener('click', kek);
+  //   button.click();
+  // });
 }
+// function kek() {
+//   console.log('lol');
+// }
 
 export { createAllCategories, createCategory, createFeatured, createSearched };

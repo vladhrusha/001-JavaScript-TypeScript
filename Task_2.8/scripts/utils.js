@@ -12,8 +12,8 @@ function getAllItems() {
     allTypesArray.push(furniture[categoryTypeString]);
   }
 
-  allTypesArray.forEach((subarray) => {
-    subarray.forEach((item) => {
+  allTypesArray.forEach((typeArray) => {
+    typeArray.forEach((item) => {
       allItemsArray.push(item);
     });
   });

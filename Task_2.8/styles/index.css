@@ -9,6 +9,16 @@
   background-size: cover;
   height: 60vh;
 }
+.navHome .divNavHome {
+  display: block !important;
+}
+.navHome .title {
+  display: none !important;
+}
+
+.divNavHome {
+  display: none;
+}
 
 body {
   margin: 0;
@@ -50,6 +60,23 @@ body {
   margin-top: 10px;
   font-size: 20px;
   color: var(--font);
+}
+.nav .title {
+  height: 10vh;
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+}
+.nav .showNow {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 10px;
+  border-radius: 3px;
+}
+.nav .slogan {
+  font-family: "Caveat", cursive;
+  font-size: 50px;
 }
 
 .main {

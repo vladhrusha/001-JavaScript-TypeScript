@@ -1,5 +1,19 @@
+function onClickCart(e) {
+  let asideCart = $('.asideCart');
+  asideCart.load('../markup/cart.html', function () {
+    const exitButton = document.querySelector('.cart__exit');
+    exitButton.addEventListener('click', () => {
+      $('.asideCart').empty();
+    });
+    getCart();
+  });
+}
+function onCheckout() {
+  initializeClearCart();
+  getCart();
+}
+
 function getAddedItem(e) {
-  console.log('clicked');
   let item = e.currentTarget.parentElement.parentElement;
   let itemName = item.querySelector('.item__name').innerHTML;
   let counter = parseInt(localStorage['counter']);
@@ -161,10 +175,6 @@ function getCartTotalPrice() {
   });
   return totalPrice;
 }
-function onCheckout() {
-  initializeClearCart();
-  getCart();
-}
 
 function initializeClearCart() {
   let array = [];
@@ -189,16 +199,6 @@ function createCartItem(item, amount) {
       </article>
     	</div>
         `;
-}
-function onClickCart(e) {
-  let asideCart = $('.asideCart');
-  asideCart.load('../markup/cart.html', function () {
-    const exitButton = document.querySelector('.cart__exit');
-    exitButton.addEventListener('click', () => {
-      $('.asideCart').empty();
-    });
-    getCart();
-  });
 }
 
 export { getAddedItem, getCart, initializeClearCart, onClickCart };
