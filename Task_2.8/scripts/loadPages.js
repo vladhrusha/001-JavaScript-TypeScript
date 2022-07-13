@@ -24,6 +24,7 @@ function loadHomePage() {
 function loadProductsPage() {
   let nav = $('.navigation');
   nav.removeClass('navHome');
+  document.querySelector('.title').innerHTML = 'Home / Products';
 
   $('.main').empty();
   $('.main').load('../markup/products.html', function () {
@@ -41,6 +42,7 @@ function loadProductsPage() {
 function loadAboutPage() {
   let nav = $('.navigation');
   nav.removeClass('navHome');
+  document.querySelector('.title').innerHTML = 'Home / About';
   $('.main').empty();
   $('.main').load('../markup/about.html');
 }
