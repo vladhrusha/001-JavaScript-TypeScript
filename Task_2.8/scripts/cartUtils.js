@@ -1,3 +1,5 @@
+let cart = document.querySelector('.cartDiv');
+
 function addCartItemsEventListeners(cart) {
   let items = cart.querySelectorAll('.cart__item');
 
@@ -14,9 +16,17 @@ function addCartItemsEventListeners(cart) {
   }
 }
 
-function increaseCartItemAmount(e) {
-  let cart = document.querySelector('.cartDiv');
+function writeToLocalStorage(
+  cartTotalAmount,
+  cartUniqueItems,
+  itemsAmountArray
+) {
+  localStorage['cartTotalAmount'] = cartTotalAmount;
+  localStorage['cartUniqueItems'] = cartUniqueItems;
+  localStorage['itemsAmountArray'] = JSON.stringify(itemsAmountArray);
+}
 
+function increaseCartItemAmount(e) {
   let itemsAmountArray = JSON.parse(localStorage['itemsAmountArray']);
   let cartTotalAmount = parseInt(localStorage['cartTotalAmount']);
 
@@ -28,20 +38,17 @@ function increaseCartItemAmount(e) {
 
   amount.innerHTML = parseInt(amount.innerHTML) + 1;
   cartUniqueItems += 1;
-  localStorage['cartUniqueItems'] = cartUniqueItems;
   itemsAmountArray[index] += 1;
-  localStorage['itemsAmountArray'] = JSON.stringify(itemsAmountArray);
-
   cartTotalAmount++;
-  localStorage['cartTotalAmount'] = cartTotalAmount;
+
+  writeToLocalStorage(cartTotalAmount, cartUniqueItems, itemsAmountArray);
+
   document.querySelector('.cart').innerHTML = cartTotalAmount;
   cart.querySelector('.totalPrice').innerHTML =
     'Total: $' + getCartTotalPrice();
 }
 
 function decreaseCartItemAmount(e) {
-  let cart = document.querySelector('.cartDiv');
-
   let cartTotalAmount = parseInt(localStorage['cartTotalAmount']);
 
   let itemsAmountArray = JSON.parse(localStorage['itemsAmountArray']);
@@ -68,10 +75,8 @@ function decreaseCartItemAmount(e) {
     item.remove();
   }
   cartTotalAmount--;
-  localStorage['cartTotalAmount'] = cartTotalAmount;
+  writeToLocalStorage(cartTotalAmount, cartUniqueItems, itemsAmountArray);
   document.querySelector('.cart').innerHTML = cartTotalAmount;
-  localStorage['cartUniqueItems'] = cartUniqueItems;
-  localStorage['itemsAmountArray'] = JSON.stringify(itemsAmountArray);
 
   amount.innerHTML = amount.innerHTML - 1;
   cart.querySelector('.totalPrice').innerHTML =
@@ -79,8 +84,6 @@ function decreaseCartItemAmount(e) {
 }
 
 function removeCartItem(e) {
-  let cart = document.querySelector('.cartDiv');
-
   let itemsAmountArray = JSON.parse(localStorage['itemsAmountArray']);
   let cartTotalAmount = parseInt(localStorage['cartTotalAmount']);
 
@@ -98,12 +101,9 @@ function removeCartItem(e) {
   }
   cartUniqueItems -= item.querySelector('.item__amount').innerHTML;
 
-  localStorage['cartUniqueItems'] = cartUniqueItems;
-  localStorage['itemsAmountArray'] = JSON.stringify(itemsAmountArray);
+  writeToLocalStorage(cartTotalAmount, cartUniqueItems, itemsAmountArray);
 
   e.currentTarget.parentElement.parentElement.remove();
-
-  localStorage['cartTotalAmount'] = cartTotalAmount;
   document.querySelector('.cart').innerHTML = cartTotalAmount;
   cart.querySelector('.totalPrice').innerHTML =
     'Total: $' + getCartTotalPrice();

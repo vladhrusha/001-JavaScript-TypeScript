@@ -159,6 +159,7 @@ body {
   flex-direction: column;
   width: 120px;
 }
+
 .row {
   display: flex;
   width: 75vw;
