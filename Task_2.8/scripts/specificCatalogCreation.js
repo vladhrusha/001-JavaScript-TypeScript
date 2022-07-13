@@ -22,6 +22,7 @@ function createAllCategories(e) {
 }
 
 function createSearched(e) {
+  e.preventDefault();
   if (e.keyCode === 13) {
     let searchInput = e.currentTarget.value.toLowerCase();
     const catalog = document.querySelector('.catalog');

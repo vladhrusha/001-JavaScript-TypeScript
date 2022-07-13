@@ -6,8 +6,13 @@ $remove : #7C95AB;
 }
 
 .navHome {
-    --font: red;
+    --font: white;
+    color: white;
+    background-image: url("../images/background.jpg");
+    background-size: cover;
+    height: 60vh;
 }
+
 
 
 body {
@@ -44,6 +49,7 @@ body {
             background-color: transparent;
             border: 0 solid black;
             margin-top: 10px;
+            font-size: 20px;
             color: var(--font);
         }
     }
@@ -53,6 +59,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    .about {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 50%;
+    }
+    .products {
+        display: flex;
+        justify-content: space-between;
+    }
 }
 .featured {
     display: flex;
@@ -69,16 +85,8 @@ body {
         }
     }
 }
-.about {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 50%;
-}
-.products {
-    display: flex;
-    justify-content: space-between;
-}
+
+
 .form {
     display: flex;
     flex-direction: column;

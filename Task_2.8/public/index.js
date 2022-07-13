@@ -5,83 +5,72 @@ import {
   createSearched,
 } from '../scripts/specificCatalogCreation.js';
 
-import { getCart, initializeClearCart } from '../scripts/createCart.js';
+import {
+  getCart,
+  initializeClearCart,
+  onClickCart,
+  getAddedItem,
+} from '../scripts/cart.js';
 
 initializeClearCart();
 loadNavigation();
-// loadHome();
+loadHomePage();
 
 function loadNavigation() {
   $('.navigation').load('../markup/nav.html', function () {
-    const buttons = document.querySelectorAll('.button');
-
-    buttons.forEach((button) => {
-      button.addEventListener('click', onNavButtonClick);
-    });
-
+    const nav = document.querySelector('.nav');
+    nav.querySelector('.home').addEventListener('click', loadHomePage);
+    nav.querySelector('.products').addEventListener('click', loadProductsPage);
+    nav.querySelector('.about').addEventListener('click', loadAboutPage);
     const cart = document.querySelector('.cart');
     cart.addEventListener('click', onClickCart);
   });
 }
-
-function onNavButtonClick(e) {
-  let buttonName = e.currentTarget.innerHTML;
-  switch (buttonName) {
-    case 'Home':
-      $('.main').empty();
-      // loadHome();
-      break;
-    case 'Products':
-      $('.main').empty();
-      $('.main').load('../markup/products.html', function () {
-        createAllCategories(e);
-        const categoryButtons = $('.category');
-        categoryButtons[0].addEventListener('click', createAllCategories);
-        for (let i = 1; i < categoryButtons.length; i++) {
-          categoryButtons[i].addEventListener('click', createCategory);
-        }
-        const search = document.querySelector('.search');
-        search.addEventListener('keyup', createSearched);
-      });
-
-      break;
-    case 'About':
-      $('.main').empty();
-      $('.main').load('../markup/about.html');
-      break;
-  }
+function kek() {
+  console.log('clicked');
 }
-function loadHome() {
+
+function loadHomePage() {
+  let nav = $('.navigation');
+  nav.addClass('navHome');
+  $('.main').empty();
   $('.main').load('../markup/home.html', function () {
     createFeatured();
+    // let cartButtons = document.querySelectorAll('.main .cartAdd');
+
+    // cartButtons.forEach((button) => {
+    //   console.log(button);
+    //   button.addEventListener('click', kek);
+    // });
+
     document.querySelector(
       '.featured'
     ).innerHTML += `<button class="productLink">ALL PRODUCTS</button>`;
+    let allProductsButton = document.querySelector('.productLink');
+    allProductsButton.addEventListener('click', loadProductsPage);
   });
-
-  let nav = document.querySelector('.nav');
-
-  console.log(nav);
-  // nav.classList.toggle('navhome');
-
-  nav.style.backgroundImage = 'url("../images/background.jpg")';
-  nav.style.backgroundSize = 'cover';
-  nav.style.height = '60vh';
-  nav.style.color = 'white';
-  nav.innerHTML += `
-      <h1>Rest, Relax, Unwind</h1>
-      <h2>Embrace your choice - we do</h2>
-      <button>SHOP NOW</button>
-      `;
 }
 
-function onClickCart(e) {
-  let asideCart = $('.asideCart');
-  asideCart.load('../markup/cart.html', function () {
-    const exitButton = document.querySelector('.cart__exit');
-    exitButton.addEventListener('click', () => {
-      $('.asideCart').empty();
-    });
-    getCart();
+function loadProductsPage() {
+  let nav = $('.navigation');
+  nav.removeClass('navHome');
+
+  $('.main').empty();
+  $('.main').load('../markup/products.html', function () {
+    const categoryButtons = $('.category');
+    categoryButtons[0].addEventListener('click', createAllCategories);
+    for (let i = 1; i < categoryButtons.length; i++) {
+      categoryButtons[i].addEventListener('click', createCategory);
+    }
+    const search = document.querySelector('.search');
+    search.addEventListener('keyup', createSearched);
+    categoryButtons[0].click();
   });
+}
+
+function loadAboutPage() {
+  let nav = $('.navigation');
+  nav.removeClass('navHome');
+  $('.main').empty();
+  $('.main').load('../markup/about.html');
 }

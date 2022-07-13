@@ -3,7 +3,11 @@
 }
 
 .navHome {
-  --font: red;
+  --font: white;
+  color: white;
+  background-image: url("../images/background.jpg");
+  background-size: cover;
+  height: 60vh;
 }
 
 body {
@@ -44,6 +48,7 @@ body {
   background-color: transparent;
   border: 0 solid black;
   margin-top: 10px;
+  font-size: 20px;
   color: var(--font);
 }
 
@@ -51,6 +56,16 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.main .about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+.main .products {
+  display: flex;
+  justify-content: space-between;
 }
 
 .featured {
@@ -67,18 +82,6 @@ body {
 .featured .row .item__image {
   width: 180px;
   height: 120px;
-}
-
-.about {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 50%;
-}
-
-.products {
-  display: flex;
-  justify-content: space-between;
 }
 
 .form {

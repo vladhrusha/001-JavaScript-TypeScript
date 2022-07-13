@@ -1,4 +1,4 @@
-import { getAddedItem } from './createCart.js';
+import { getAddedItem } from './cart.js';
 
 function initializeCatalogColumns(catalog) {
   for (let i = 0; i < 3; i++) {
