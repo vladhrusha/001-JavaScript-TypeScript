@@ -6,7 +6,6 @@ import {
 } from '../scripts/specificCatalogCreation.js';
 
 import { getCart, initializeClearCart } from '../scripts/createCart.js';
-import { sliderHandler } from '../scripts/utils.js';
 
 initializeClearCart();
 loadNavigation();
