@@ -3,6 +3,7 @@ import {
   initializeCatalogColumns,
   fillCatalogColumns,
   createCatalogItem,
+  getAddedItem,
 } from '../scripts/dummyCatalogCreation.js';
 
 import { getAllItems, sliderHandler } from './utils.js';
@@ -63,16 +64,11 @@ function createFeatured(e) {
   row.innerHTML += createCatalogItem(furniture['Liddy'][2]);
   row.innerHTML += createCatalogItem(furniture['Marcos'][1]);
 
-  // let cartButtons = document.querySelectorAll('.item__image');
-  // console.log(cartButtons);
-  // cartButtons.forEach((button) => {
-  //   console.log(button);
-  //   button.addEventListener('click', kek);
-  //   button.click();
-  // });
+  let cartButtons = $('.cartAdd');
+  for (let i = 0; i < cartButtons.length; i++) {
+    cartButtons[i].addEventListener('click', getAddedItem);
+    // cartButtons[i].click();
+  }
 }
-// function kek() {
-//   console.log('lol');
-// }
 
 export { createAllCategories, createCategory, createFeatured, createSearched };

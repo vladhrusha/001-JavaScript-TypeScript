@@ -25,10 +25,15 @@ function createCatalogItem(item) {
 	<img class="item__image" src="${item.imageURL}" />
 	<span class="item__name">${item.name}</span>
   <div class='priceAndCart'>
-	<h6>${item.price}</h6>
-  <h6 class='cartAdd'>Add to Cart</h6>
+	<h5>${item.price}</h5>
+  <h5 class='cartAdd'>Add to Cart</h5>
   </div>
 	</article>`;
 }
 
-export { initializeCatalogColumns, fillCatalogColumns, createCatalogItem };
+export {
+  initializeCatalogColumns,
+  fillCatalogColumns,
+  createCatalogItem,
+  getAddedItem,
+};
