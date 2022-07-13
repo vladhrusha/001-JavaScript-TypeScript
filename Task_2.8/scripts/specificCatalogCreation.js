@@ -16,7 +16,7 @@ function createAllCategories(e) {
   catalog.innerHTML = '';
   initializeCatalogColumns(catalog);
 
-  localStorage['allItemsArray'] = JSON.stringify(allItemsArray);
+  localStorage.setItem('allItemsArray', JSON.stringify(allItemsArray));
   let finalArray = sliderHandler(allItemsArray);
 
   fillCatalogColumns(catalog, finalArray);

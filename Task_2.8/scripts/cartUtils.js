@@ -19,23 +19,23 @@ function writeToLocalStorage(
   cartNumberOfUniqueItems,
   itemsAmountArray
 ) {
-  localStorage['cartTotalAmount'] = cartTotalAmount;
-  localStorage['cartNumberOfUniqueItems'] = cartNumberOfUniqueItems;
-  localStorage['itemsAmountArray'] = JSON.stringify(itemsAmountArray);
+  localStorage.setItem('cartTotalAmount', cartTotalAmount);
+  localStorage.setItem('cartNumberOfUniqueItems', cartNumberOfUniqueItems);
+  localStorage.setItem('itemsAmountArray', JSON.stringify(itemsAmountArray));
 }
 
 function increaseCartItemAmount(e) {
   let cart = document.querySelector('.cartDiv');
 
-  let itemsAmountArray = JSON.parse(localStorage['itemsAmountArray']);
-  let cartTotalAmount = parseInt(localStorage['cartTotalAmount']);
+  let itemsAmountArray = JSON.parse(localStorage.getItem('itemsAmountArray'));
+  let cartTotalAmount = parseInt(localStorage.getItem('cartTotalAmount'));
 
   let item = e.currentTarget.parentElement.parentElement;
   let parent = item.parentElement;
   let index = Array.prototype.indexOf.call(parent.children, item);
   let amount = item.querySelector('.item__amount');
   let cartNumberOfUniqueItems = parseInt(
-    localStorage['cartNumberOfUniqueItems']
+    localStorage.getItem('cartNumberOfUniqueItems')
   );
 
   amount.innerHTML = parseInt(amount.innerHTML) + 1;
@@ -57,9 +57,9 @@ function increaseCartItemAmount(e) {
 function decreaseCartItemAmount(e) {
   let cart = document.querySelector('.cartDiv');
 
-  let cartTotalAmount = parseInt(localStorage['cartTotalAmount']);
+  let cartTotalAmount = parseInt(localStorage.getItem('cartTotalAmount'));
 
-  let itemsAmountArray = JSON.parse(localStorage['itemsAmountArray']);
+  let itemsAmountArray = JSON.parse(localStorage.getItem('itemsAmountArray'));
 
   let item = e.currentTarget.parentElement.parentElement;
   let parent = item.parentElement;
@@ -70,16 +70,16 @@ function decreaseCartItemAmount(e) {
   }
 
   let amount = item.querySelector('.item__amount');
-  let cartItemsNames = JSON.parse(localStorage['cartItemsNames']);
+  let cartItemsNames = JSON.parse(localStorage.getItem('cartItemsNames'));
   let cartNumberOfUniqueItems = parseInt(
-    localStorage['cartNumberOfUniqueItems']
+    localStorage.getItem('cartNumberOfUniqueItems')
   );
   cartNumberOfUniqueItems = cartNumberOfUniqueItems - 1;
-  if (amount.innerHTML - 1 < 1) {
+  if (parseInt(amount.innerHTML) - 1 < 1) {
     for (let i = 0; i < cartItemsNames.length; i++) {
       if (item.querySelector('.item__name').innerHTML == cartItemsNames[i]) {
         cartItemsNames.splice(i, 1);
-        localStorage['cartItemsNames'] = JSON.stringify(cartItemsNames);
+        localStorage.setItem('cartItemsNames', JSON.stringify(cartItemsNames));
       }
     }
     item.remove();
@@ -92,7 +92,7 @@ function decreaseCartItemAmount(e) {
   );
   document.querySelector('.cart').innerHTML = cartTotalAmount;
 
-  amount.innerHTML = amount.innerHTML - 1;
+  amount.innerHTML = parseInt(amount.innerHTML) - 1;
   cart.querySelector('.totalPrice').innerHTML =
     'Total: $' + getCartTotalPrice();
 }
@@ -100,21 +100,21 @@ function decreaseCartItemAmount(e) {
 function removeCartItem(e) {
   let cart = document.querySelector('.cartDiv');
 
-  let itemsAmountArray = JSON.parse(localStorage['itemsAmountArray']);
-  let cartTotalAmount = parseInt(localStorage['cartTotalAmount']);
+  let itemsAmountArray = JSON.parse(localStorage.getItem('itemsAmountArray'));
+  let cartTotalAmount = parseInt(localStorage.getItem('cartTotalAmount'));
 
   let cartNumberOfUniqueItems = parseInt(
-    localStorage['cartNumberOfUniqueItems']
+    localStorage.getItem('cartNumberOfUniqueItems')
   );
   let item = e.currentTarget.parentElement.parentElement;
-  let cartItemsNames = JSON.parse(localStorage['cartItemsNames']);
+  let cartItemsNames = JSON.parse(localStorage.getItem('cartItemsNames'));
 
   for (let i = 0; i < cartItemsNames.length; i++) {
     if (item.querySelector('.item__name').innerHTML == cartItemsNames[i]) {
       cartItemsNames.splice(i, 1);
       cartTotalAmount = cartTotalAmount - parseInt(itemsAmountArray[i]);
       itemsAmountArray.splice(i, 1);
-      localStorage['cartItemsNames'] = JSON.stringify(cartItemsNames);
+      localStorage.setItem('cartItemsNames', JSON.stringify(cartItemsNames));
     }
   }
   console.log(cartNumberOfUniqueItems);
@@ -134,8 +134,8 @@ function removeCartItem(e) {
 }
 
 function getCartTotalPrice() {
-  let itemsAmountArray = JSON.parse(localStorage['itemsAmountArray']);
-  let cartItemsNames = JSON.parse(localStorage['cartItemsNames']);
+  let itemsAmountArray = JSON.parse(localStorage.getItem('itemsAmountArray'));
+  let cartItemsNames = JSON.parse(localStorage.getItem('cartItemsNames'));
   let itemList = document.querySelectorAll('.cart__item');
 
   let totalPrice = 0;
