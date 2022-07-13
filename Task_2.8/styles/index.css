@@ -1,0 +1,252 @@
+:root {
+  --font: black;
+}
+
+.navHome {
+  --font: white;
+  color: white;
+  background-image: url("../images/background.jpg");
+  background-size: cover;
+  height: 60vh;
+}
+.navHome .divNavHome {
+  display: block !important;
+}
+.navHome .title {
+  display: none !important;
+}
+
+.divNavHome {
+  display: none;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  color: var(--font);
+}
+
+.section {
+  width: 100%;
+}
+
+.nav {
+  padding-left: 100px;
+}
+.nav .nav__header {
+  display: flex;
+  justify-content: space-between;
+}
+.nav .nav__header .button {
+  background-color: transparent;
+  border: 0 solid black;
+  margin-top: 10px;
+  font-size: 18px;
+  color: var(--font);
+}
+.nav .nav__header .logo {
+  font-family: "Caveat", cursive;
+  font-size: 30px;
+  line-height: 15px;
+  margin: 10px 0px;
+  color: var(--font);
+}
+.nav .nav__header .cart {
+  background-color: transparent;
+  border: 0 solid black;
+  margin-top: 10px;
+  font-size: 20px;
+  color: var(--font);
+}
+.nav .title {
+  height: 10vh;
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+}
+.nav .showNow {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 10px;
+  border-radius: 3px;
+}
+.nav .slogan {
+  font-family: "Caveat", cursive;
+  font-size: 50px;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main .about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+.main .about .article__title {
+  font-size: 40px;
+  text-align: center;
+}
+.main .about .article__span {
+  color: darkorange;
+}
+.main .about .article__paragraph {
+  line-height: 24px;
+  width: 600px;
+  color: #555;
+}
+.main .products {
+  display: flex;
+  justify-content: space-between;
+}
+
+.featured {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80vw;
+}
+.featured .row {
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+}
+.featured .row .item__image {
+  width: 180px;
+  height: 120px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 120px;
+  margin-right: 30px;
+}
+.form .search {
+  background-color: lightgray;
+  border: 0;
+  width: 120px;
+  height: 25px;
+  border-radius: 5px;
+}
+.form .search:focus {
+  outline: none;
+}
+.form .category {
+  background-color: white;
+  border: 0;
+  margin-bottom: 10px;
+}
+.form .h5 {
+  margin: 15px 0px;
+}
+
+.catalog {
+  width: 50vw;
+  display: flex;
+  justify-content: space-evenly;
+}
+.catalog .catalog__column {
+  display: flex;
+  flex-direction: column;
+  width: 120px;
+}
+
+.row {
+  display: flex;
+  width: 75vw;
+  justify-content: space-around;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+}
+.item .priceAndCart {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cartDiv {
+  background-color: lightgray;
+  width: 300px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.cartDiv .cart__exit {
+  position: relative;
+  font-size: 30px;
+  font-weight: 900;
+  right: 120px;
+  color: #7C95AB;
+}
+.cartDiv .cart__title {
+  font-family: "Caveat", cursive;
+}
+.cartDiv .cart__itemList {
+  width: 300px;
+}
+.cartDiv .cart__item {
+  width: 300px;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+}
+.cartDiv .cart__image {
+  width: 60px;
+  height: 45px;
+  border-radius: 5px;
+}
+.cartDiv .item__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.cartDiv .item__info h4 {
+  margin: 0 0;
+}
+.cartDiv .item__info .item__remove {
+  color: #7C95AB;
+  background-color: lightgray;
+  border: 0 solid black;
+  margin-top: 5px;
+  padding: 0;
+}
+.cartDiv .item__counter {
+  display: flex;
+  flex-direction: column;
+}
+.cartDiv .item__counter .alter {
+  color: #BA5D2D;
+}
+.cartDiv .item__counter .down {
+  transform: rotate(180deg);
+}
+.cartDiv .totalPrice {
+  font-family: "Caveat", cursive;
+}
+.cartDiv .checkoutButton {
+  background-color: #BA5D2D;
+  border: 0 solid black;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
+  width: 75%;
+  height: 25px;
+  margin-bottom: 20px;
+}
+
+/*# sourceMappingURL=index.css.map */
