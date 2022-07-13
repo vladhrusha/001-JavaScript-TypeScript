@@ -1,3 +1,5 @@
+import { addCartItemsEventListeners, getCartTotalPrice } from './cartUtils.js';
+
 function onClickCart(e) {
   let asideCart = $('.asideCart');
   asideCart.load('../markup/cart.html', function () {
@@ -11,176 +13,82 @@ function onClickCart(e) {
 function onCheckout() {
   initializeClearCart();
   getCart();
+  document.querySelector('.cart').innerHTML = '0';
 }
 
 function getAddedItem(e) {
   let item = e.currentTarget.parentElement.parentElement;
   let itemName = item.querySelector('.item__name').innerHTML;
-  let counter = parseInt(localStorage['counter']);
-  let data = JSON.parse(localStorage['cartItems']);
-  let amountArray = JSON.parse(localStorage['amountArray']);
-  if (data.length == 0) {
-    amountArray.push(1);
+
+  let cartUniqueItems = parseInt(localStorage['cartUniqueItems']);
+  let cartTotalAmount = parseInt(localStorage['cartTotalAmount']);
+
+  let cartItemsNames = JSON.parse(localStorage['cartItemsNames']);
+  let itemsAmountArray = JSON.parse(localStorage['itemsAmountArray']);
+  if (cartItemsNames.length == 0) {
+    itemsAmountArray.push(1);
   }
-  for (let i = 0; i < data.length; i++) {
-    if (data[i] == itemName) {
-      amountArray[i] += 1;
+  for (let i = 0; i < cartItemsNames.length; i++) {
+    if (cartItemsNames[i] == itemName) {
+      itemsAmountArray[i] += 1;
       break;
     }
   }
   let itemFound = false;
 
-  for (let i = 0; i < data.length; i++) {
-    if (data[i] == itemName) {
+  for (let i = 0; i < cartItemsNames.length; i++) {
+    if (cartItemsNames[i] == itemName) {
       itemFound = true;
     }
   }
 
   if (itemFound == false) {
-    if (data.length != 0) {
-      amountArray.push(1);
+    if (cartItemsNames.length != 0) {
+      itemsAmountArray.push(1);
     }
-    data[counter] = item.querySelector('.item__name').innerHTML;
-    localStorage['counter'] = counter + 1;
+    cartItemsNames[cartUniqueItems] =
+      item.querySelector('.item__name').innerHTML;
+    localStorage['cartUniqueItems'] = cartUniqueItems + 1;
   }
 
-  localStorage['cartItems'] = JSON.stringify(data);
-  localStorage['amountArray'] = JSON.stringify(amountArray);
-
-  document.querySelector('.cart').innerHTML = localStorage['counter'];
+  localStorage['cartItemsNames'] = JSON.stringify(cartItemsNames);
+  localStorage['itemsAmountArray'] = JSON.stringify(itemsAmountArray);
+  cartTotalAmount++;
+  localStorage['cartTotalAmount'] = cartTotalAmount;
+  document.querySelector('.cart').innerHTML = cartTotalAmount;
 }
 
 function getCart() {
-  let amountArray = JSON.parse(localStorage['amountArray']);
-
-  let itemList = document.querySelector('.cart__itemList');
-  itemList.innerHTML = '';
-  let data = JSON.parse(localStorage['cartItems']);
+  let itemsAmountArray = JSON.parse(localStorage['itemsAmountArray']);
+  let cartItemsNames = JSON.parse(localStorage['cartItemsNames']);
   let allItemsArray = JSON.parse(localStorage['allItemsArray']);
-  for (let i = 0; i < data.length; i++) {
+
+  let cart = document.querySelector('.cartDiv');
+  let itemList = cart.querySelector('.cart__itemList');
+  itemList.innerHTML = '';
+
+  for (let i = 0; i < cartItemsNames.length; i++) {
     for (let j = 0; j < allItemsArray.length; j++) {
-      if (data[i] == allItemsArray[j].name) {
-        itemList.innerHTML += createCartItem(allItemsArray[j], amountArray[i]);
+      if (cartItemsNames[i] == allItemsArray[j].name) {
+        itemList.innerHTML += createCartItem(
+          allItemsArray[j],
+          itemsAmountArray[i]
+        );
       }
     }
   }
-  let items = document.querySelectorAll('.cart__item');
-
-  for (let i = 0; i < items.length; i++) {
-    items[i]
-      .querySelector('.item__remove')
-      .addEventListener('click', removeCartItem);
-    items[i]
-      .querySelector('.up')
-      .addEventListener('click', increaseCartItemAmount);
-    items[i]
-      .querySelector('.down')
-      .addEventListener('click', decreaseCartItemAmount);
-  }
-  document.querySelector('.totalPrice').innerHTML =
-    'Total: $' + getCartTotalPrice().toFixed(2);
-  document
-    .querySelector('.checkoutButton')
-    .addEventListener('click', onCheckout);
-}
-
-function increaseCartItemAmount(e) {
-  let amountArray = JSON.parse(localStorage['amountArray']);
-
-  let item = e.currentTarget.parentElement.parentElement;
-  let parent = item.parentElement;
-  let index = Array.prototype.indexOf.call(parent.children, item);
-  let amount = item.querySelector('.item__amount');
-  let counter = parseInt(localStorage['counter']);
-
-  amount.innerHTML = parseInt(amount.innerHTML) + 1;
-  counter += 1;
-  localStorage['counter'] = counter;
-  document.querySelector('.cart').innerHTML = localStorage['counter'];
-  amountArray[index] += 1;
-  localStorage['amountArray'] = JSON.stringify(amountArray);
-}
-
-function decreaseCartItemAmount(e) {
-  let amountArray = JSON.parse(localStorage['amountArray']);
-
-  let item = e.currentTarget.parentElement.parentElement;
-  let parent = item.parentElement;
-  let index = Array.prototype.indexOf.call(parent.children, item);
-  amountArray[index] -= 1;
-  if (amountArray[index] < 1) {
-    amountArray.splice(index, 1);
-  }
-
-  let amount = item.querySelector('.item__amount');
-  let data = JSON.parse(localStorage['cartItems']);
-  let counter = parseInt(localStorage['counter']);
-  counter = counter - 1;
-  if (amount.innerHTML - 1 < 1) {
-    for (let i = 0; i < data.length; i++) {
-      if (item.querySelector('.item__name').innerHTML == data[i]) {
-        data.splice(i, 1);
-        localStorage['cartItems'] = JSON.stringify(data);
-      }
-    }
-    item.remove();
-  }
-  localStorage['counter'] = counter;
-  document.querySelector('.cart').innerHTML = localStorage['counter'];
-  localStorage['amountArray'] = JSON.stringify(amountArray);
-
-  amount.innerHTML = amount.innerHTML - 1;
-}
-
-function removeCartItem(e) {
-  let amountArray = JSON.parse(localStorage['amountArray']);
-
-  let counter = parseInt(localStorage['counter']);
-  let item = e.currentTarget.parentElement.parentElement;
-  let data = JSON.parse(localStorage['cartItems']);
-
-  for (let i = 0; i < data.length; i++) {
-    if (item.querySelector('.item__name').innerHTML == data[i]) {
-      data.splice(i, 1);
-      amountArray.splice(i, 1);
-
-      localStorage['cartItems'] = JSON.stringify(data);
-    }
-  }
-  counter -= item.querySelector('.item__amount').innerHTML;
-
-  localStorage['counter'] = counter;
-  localStorage['amountArray'] = JSON.stringify(amountArray);
-
-  document.querySelector('.cart').innerHTML = localStorage['counter'];
-  e.currentTarget.parentElement.parentElement.remove();
-}
-
-function getCartTotalPrice() {
-  let amountArray = JSON.parse(localStorage['amountArray']);
-  let data = JSON.parse(localStorage['cartItems']);
-  let itemList = document.querySelectorAll('.cart__item');
-
-  let totalPrice = 0;
-  let itemPrice = 0;
-  amountArray.forEach((itemAmount, index) => {
-    let itemName = itemList[index].querySelector('.item__name').innerHTML;
-
-    if (data[index] == itemName) {
-      itemPrice = itemList[index].querySelector('.item__price').innerHTML;
-      itemPrice = itemPrice.slice(1, itemPrice.length);
-      itemPrice = parseFloat(itemPrice);
-    }
-    totalPrice += itemPrice * itemAmount;
-  });
-  return totalPrice;
+  addCartItemsEventListeners(cart);
+  cart.querySelector('.totalPrice').innerHTML =
+    'Total: $' + getCartTotalPrice();
+  cart.querySelector('.checkoutButton').addEventListener('click', onCheckout);
 }
 
 function initializeClearCart() {
   let array = [];
-  localStorage['counter'] = 0;
-  localStorage['amountArray'] = JSON.stringify(array);
-  localStorage['cartItems'] = JSON.stringify(array);
+  localStorage['cartUniqueItems'] = 0;
+  localStorage['itemsAmountArray'] = JSON.stringify(array);
+  localStorage['cartItemsNames'] = JSON.stringify(array);
+  localStorage['cartTotalAmount'] = 0;
 }
 
 function createCartItem(item, amount) {
