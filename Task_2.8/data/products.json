@@ -2,34 +2,34 @@
   "Ikea":
   [
   { "name":"White Sofa", 
-     "imageURL": "../images/Furniture/Ikea/whiteSofa.jpg", "price": "$59.99" }
+     "imageURL": "../images/Furniture/Ikea/whiteSofa.jpg", "price": "$89.49" }
 ],
 "Marcos":
   [
   { "name":"Black Sofa", 
-     "imageURL": "../images/Furniture/Marcos/blackSofa.jpg", "price": "$55.99" },
+     "imageURL": "../images/Furniture/Marcos/blackSofa.jpg", "price": "$85.99" },
     { "name":"Red Armchair", 
-     "imageURL": "../images/Furniture/Marcos/redArmchair.jpg", "price": "$38.99" }
+     "imageURL": "../images/Furniture/Marcos/redArmchair.jpg", "price": "$50.49" }
 ],
 "Caressa":
   [
   { "name":"Brown Sofa", 
-     "imageURL": "../images/Furniture/Caressa/brownSofa.jpg", "price": "$56.49" },
+     "imageURL": "../images/Furniture/Caressa/brownSofa.jpg", "price": "$76.49" },
        { "name":"Yellow Armchair", 
-     "imageURL": "../images/Furniture/Caressa/yellowArmchair.jpg", "price": "$34.99" },
+     "imageURL": "../images/Furniture/Caressa/yellowArmchair.jpg", "price": "$45.49" },
          { "name":"Wooden Table", 
-     "imageURL": "../images/Furniture/Caressa/woodenTable.jpg", "price": "$45.99" }
+     "imageURL": "../images/Furniture/Caressa/woodenTable.jpg", "price": "$30.99" }
 ],
 "Liddy":
   [
   { "name":"Green Sofa", 
-     "imageURL": "../images/Furniture/Liddy/greenSofa.jpg", "price": "$54.99" },
+     "imageURL": "../images/Furniture/Liddy/greenSofa.jpg", "price": "$60.99" },
        { "name":"Orange Armchair", 
-     "imageURL": "../images/Furniture/Liddy/orangeArmchair.jpg", "price": "$36.99" },
+     "imageURL": "../images/Furniture/Liddy/orangeArmchair.jpg", "price": "$35.49" },
          { "name":"White Table", 
-     "imageURL": "../images/Furniture/Liddy/whiteTable.jpg", "price": "$46.99" },
+     "imageURL": "../images/Furniture/Liddy/whiteTable.jpg", "price": "$20.99" },
          { "name":"Black Stool", 
-     "imageURL": "../images/Furniture/Liddy/blackStool.jpg", "price": "$25.99" }
+     "imageURL": "../images/Furniture/Liddy/blackStool.jpg", "price": "$10.49" }
 ],
 "type": "module"
 }

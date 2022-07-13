@@ -95,6 +95,9 @@ body {
   height: 25px;
   border-radius: 5px;
 }
+.form .search:focus {
+  outline: none;
+}
 .form .category {
   background-color: white;
   border: 0;

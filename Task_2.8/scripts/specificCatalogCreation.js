@@ -5,30 +5,41 @@ import {
   createCatalogItem,
 } from '../scripts/dummyCatalogCreation.js';
 
+import { getAllItems, sliderHandler } from './utils.js';
+
+let allItemsArray = getAllItems();
+
 function createAllCategories(e) {
   e.preventDefault();
-  let allTypesArray = [];
-  let allItemsArray = [];
   const catalog = document.querySelector('.catalog');
   catalog.innerHTML = '';
   initializeCatalogColumns(catalog);
 
-  const categoryTypes = Object.keys(furniture);
-  let categoryTypeString;
-  let categoryType;
-  for (let i = 0; i < categoryTypes.length - 1; i++) {
-    categoryTypeString = categoryTypes[i];
-    categoryType = furniture[categoryTypeString];
-    allTypesArray.push(furniture[categoryTypeString]);
-  }
-
-  allTypesArray.forEach((subarray) => {
-    subarray.forEach((item) => {
-      allItemsArray.push(item);
-    });
-  });
   localStorage['allItemsArray'] = JSON.stringify(allItemsArray);
-  fillCatalogColumns(catalog, allItemsArray);
+  let finalArray = sliderHandler(allItemsArray);
+
+  fillCatalogColumns(catalog, finalArray);
+}
+
+function createSearched(e) {
+  if (e.keyCode === 13) {
+    let searchInput = e.currentTarget.value.toLowerCase();
+    const catalog = document.querySelector('.catalog');
+    catalog.innerHTML = '';
+
+    initializeCatalogColumns(catalog);
+
+    let searchedItemsArray = [];
+
+    allItemsArray.forEach((item) => {
+      let text = item.name.toLowerCase();
+      if (item.name.toLowerCase().includes(searchInput)) {
+        searchedItemsArray.push(item);
+      }
+    });
+    let finalArray = sliderHandler(searchedItemsArray);
+    fillCatalogColumns(catalog, finalArray);
+  }
 }
 
 function createCategory(e) {
@@ -39,7 +50,8 @@ function createCategory(e) {
 
   let categoryTypeString = e.currentTarget.innerHTML;
   const furnitureType = furniture[categoryTypeString];
-  fillCatalogColumns(catalog, furnitureType);
+  let finalArray = sliderHandler(furnitureType);
+  fillCatalogColumns(catalog, finalArray);
 }
 
 function createFeatured(e) {
@@ -50,4 +62,5 @@ function createFeatured(e) {
   row.innerHTML += createCatalogItem(furniture['Liddy'][2]);
   row.innerHTML += createCatalogItem(furniture['Marcos'][1]);
 }
-export { createAllCategories, createCategory, createFeatured };
+
+export { createAllCategories, createCategory, createFeatured, createSearched };

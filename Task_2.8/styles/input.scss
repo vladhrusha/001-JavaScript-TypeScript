@@ -92,6 +92,9 @@ body {
         height: 25px;
         border-radius: 5px;
     }
+    .search:focus {
+        outline: none;
+    }
     .category {
         background-color: white;
         border: 0;

@@ -2,13 +2,13 @@ import {
   createAllCategories,
   createCategory,
   createFeatured,
+  createSearched,
 } from '../scripts/specificCatalogCreation.js';
 
-import { getCart } from '../scripts/createCart.js';
+import { getCart, initializeClearCart } from '../scripts/createCart.js';
+import { sliderHandler } from '../scripts/utils.js';
 
-const array = [];
-localStorage['cartItems'] = JSON.stringify(array);
-localStorage['counter'] = 0;
+initializeClearCart();
 loadNavigation();
 // loadHome();
 
@@ -41,6 +41,8 @@ function onNavButtonClick(e) {
         for (let i = 1; i < categoryButtons.length; i++) {
           categoryButtons[i].addEventListener('click', createCategory);
         }
+        const search = document.querySelector('.search');
+        search.addEventListener('keyup', createSearched);
       });
 
       break;

@@ -1,16 +1,43 @@
 function getAddedItem(e) {
   let item = e.currentTarget.parentElement.parentElement;
+  let itemName = item.querySelector('.item__name').innerHTML;
   let counter = parseInt(localStorage['counter']);
   let data = JSON.parse(localStorage['cartItems']);
-  data[counter] = item.querySelector('.item__name').innerHTML;
+  let amountArray = JSON.parse(localStorage['amountArray']);
+  if (data.length == 0) {
+    amountArray.push(1);
+  }
+  for (let i = 0; i < data.length; i++) {
+    if (data[i] == itemName) {
+      amountArray[i] += 1;
+      break;
+    }
+  }
+  let itemFound = false;
+
+  for (let i = 0; i < data.length; i++) {
+    if (data[i] == itemName) {
+      itemFound = true;
+    }
+  }
+
+  if (itemFound == false) {
+    if (data.length != 0) {
+      amountArray.push(1);
+    }
+    data[counter] = item.querySelector('.item__name').innerHTML;
+    localStorage['counter'] = counter + 1;
+  }
+
   localStorage['cartItems'] = JSON.stringify(data);
-  localStorage['counter'] = counter + 1;
+  localStorage['amountArray'] = JSON.stringify(amountArray);
+
   document.querySelector('.cart').innerHTML = localStorage['counter'];
-  console.log(document.querySelector('.cart').innerHTML);
 }
-let amountArray = [];
+
 function getCart() {
-  console.log(amountArray[0]);
+  let amountArray = JSON.parse(localStorage['amountArray']);
+
   let itemList = document.querySelector('.cart__itemList');
   itemList.innerHTML = '';
   let data = JSON.parse(localStorage['cartItems']);
@@ -18,8 +45,7 @@ function getCart() {
   for (let i = 0; i < data.length; i++) {
     for (let j = 0; j < allItemsArray.length; j++) {
       if (data[i] == allItemsArray[j].name) {
-        itemList.innerHTML += createCartItem(allItemsArray[j]);
-        amountArray.push(1);
+        itemList.innerHTML += createCartItem(allItemsArray[j], amountArray[i]);
       }
     }
   }
@@ -36,9 +62,16 @@ function getCart() {
       .querySelector('.down')
       .addEventListener('click', decreaseCartItemAmount);
   }
+  document.querySelector('.totalPrice').innerHTML =
+    'Total: $' + getCartTotalPrice();
+  document
+    .querySelector('.checkoutButton')
+    .addEventListener('click', onCheckout);
 }
 
 function increaseCartItemAmount(e) {
+  let amountArray = JSON.parse(localStorage['amountArray']);
+
   let item = e.currentTarget.parentElement.parentElement;
   let parent = item.parentElement;
   let index = Array.prototype.indexOf.call(parent.children, item);
@@ -49,11 +82,13 @@ function increaseCartItemAmount(e) {
   counter += 1;
   localStorage['counter'] = counter;
   document.querySelector('.cart').innerHTML = localStorage['counter'];
-  console.log(amountArray);
   amountArray[index] += 1;
+  localStorage['amountArray'] = JSON.stringify(amountArray);
 }
 
 function decreaseCartItemAmount(e) {
+  let amountArray = JSON.parse(localStorage['amountArray']);
+
   let item = e.currentTarget.parentElement.parentElement;
   let parent = item.parentElement;
   let index = Array.prototype.indexOf.call(parent.children, item);
@@ -77,30 +112,70 @@ function decreaseCartItemAmount(e) {
   }
   localStorage['counter'] = counter;
   document.querySelector('.cart').innerHTML = localStorage['counter'];
+  localStorage['amountArray'] = JSON.stringify(amountArray);
 
   amount.innerHTML = amount.innerHTML - 1;
 }
 
 function removeCartItem(e) {
+  let amountArray = JSON.parse(localStorage['amountArray']);
+
   let counter = parseInt(localStorage['counter']);
   let item = e.currentTarget.parentElement.parentElement;
   let data = JSON.parse(localStorage['cartItems']);
-  console.log(data);
 
   for (let i = 0; i < data.length; i++) {
     if (item.querySelector('.item__name').innerHTML == data[i]) {
       data.splice(i, 1);
+      amountArray.splice(i, 1);
+
       localStorage['cartItems'] = JSON.stringify(data);
     }
   }
   counter -= item.querySelector('.item__amount').innerHTML;
 
   localStorage['counter'] = counter;
+  localStorage['amountArray'] = JSON.stringify(amountArray);
+
   document.querySelector('.cart').innerHTML = localStorage['counter'];
   e.currentTarget.parentElement.parentElement.remove();
 }
 
-function createCartItem(item) {
+function getCartTotalPrice() {
+  let amountArray = JSON.parse(localStorage['amountArray']);
+  let data = JSON.parse(localStorage['cartItems']);
+  let itemList = document.querySelectorAll('.cart__item');
+
+  let totalPrice = 0;
+  let itemPrice = 0;
+  amountArray.forEach((itemAmount, index) => {
+    let itemName = itemList[index].querySelector('.item__name').innerHTML;
+
+    if (data[index] == itemName) {
+      itemPrice = itemList[index].querySelector('.item__price').innerHTML;
+      itemPrice = itemPrice.slice(1, itemPrice.length);
+      itemPrice = parseFloat(itemPrice);
+      console.log(itemPrice);
+    }
+    console.log(itemAmount);
+    totalPrice += itemPrice * itemAmount;
+  });
+  console.log(totalPrice);
+  return totalPrice;
+}
+function onCheckout() {
+  initializeClearCart();
+  getCart();
+}
+
+function initializeClearCart() {
+  let array = [];
+  localStorage['counter'] = 0;
+  localStorage['amountArray'] = JSON.stringify(array);
+  localStorage['cartItems'] = JSON.stringify(array);
+}
+
+function createCartItem(item, amount) {
   return `
     	<article class="cart__item">
     	<img class="cart__image" src="${item.imageURL}">
@@ -111,10 +186,10 @@ function createCartItem(item) {
     	</div>
     	<div class="item__counter">
     	<span class="up">^</span>
-    	<span class="item__amount">1</span>
+    	<span class="item__amount">${amount}</span>
     	<span class="down">^</span>
       </article>
     	</div>
         `;
 }
-export { getAddedItem, getCart };
+export { getAddedItem, getCart, initializeClearCart };
